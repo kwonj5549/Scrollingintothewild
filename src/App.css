@@ -5,9 +5,9 @@
   overflow: hidden; /* Hide all scrollbars */
   width: 100vw;
   height: 100vh;
-  display: flex; /* Use flexbox for centering */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: space-between; /* Distribute children with space between */
   background-color: #fff; /* Optional: background color */
 }
 
@@ -15,13 +15,27 @@
   font-size: 6rem; /* Increase the font size */
   text-align: center;
   color: #333; /* Adjust color as needed */
+  margin: auto; /* Center text vertically */
 }
-.road {
-  position: fixed;
+
+#road {
+  position: absolute;
   bottom: 0;
-  left: 0;
   width: 100%;
   height: 50px; /* Adjust the height as needed */
-  background: #333; /* Simple road color, or use a background image */
-  z-index: -1; /* Ensure it's behind other elements */
+  background: #888; /* Background of the road */
+}
+
+#stripes {
+  position: absolute;
+  bottom: 25px; /* Align with the bottom of the road */
+  width: 100%;
+  height: 5%;
+  background: repeating-linear-gradient(
+          to right,
+          yellow,
+          yellow 8vw,
+          transparent 8vw,
+          transparent 20vw
+  );
 }
