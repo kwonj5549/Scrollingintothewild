@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css';
 
-function App() {
+
+
+const App = () => {
+    const mainTextRef = React.useRef(null);
+  useEffect(() => {
+    const handleWheel = (event) => {
+      // Move up when scrolling down, and vice versa
+      gsap.to(mainTextRef.current, {
+        y: "-=100", // Adjust this value to control the speed of the movement
+        ease: "none",
+      });
+    };
+
+    window.addEventListener("wheel", handleWheel);
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <div className="main-text" ref={mainTextRef}>
+          <p>Scrolling Into the Wild</p>
+        </div>
+        <div className="road"></div>
+      </div>
   );
 }
 
