@@ -64,6 +64,21 @@ body {
   left: -600px; /* Center the car horizontally */
   width: 590px; /* Maintain the aspect ratio */
   height: auto; /* Example height, adjust as needed */
-  z-index: 2; /* Ensure the car is above the road and stripes */
+  z-index: 10; /* Ensure the car is above the road and stripes */
   overflow:hidden;
+}
+#mile-marker-0{
+  position: absolute;
+  bottom: 200px; /* Align with the bottom of the road */
+  left: 80%; /* Align with the left of the road */
+  width: 10%;
+  height: auto;
+
+}
+#mile-sign{
+  position: absolute;
+ top:-25%; /* Align with the bottom of the road */
+  left: 50%; /* Align with the left of the road */
+  width: 10%;
+  height: auto;
 }
