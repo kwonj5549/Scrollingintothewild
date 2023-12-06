@@ -11,7 +11,7 @@ body {
 
 .App {
   background-size: 100% 78%;
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
   font-family: 'ThaleahFat', sans-serif;
   overflow: hidden; /* Hide all scrollbars */
   width: 100vw;
@@ -30,7 +30,18 @@ body {
   margin: auto; /* Center text vertically */
   margin-top: 5%;
 }
+.milesign-text{
+  font-size: 2rem; /* Increase the font size */
 
+  color: #333; /* Adjust color as needed */
+  position: relative;
+  top:0%; /* Align with the bottom of the road */
+  /*left:; !* Align with the left of the road *!*/
+  transform: translate(22%,-155%);
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
 #road {
   position: absolute;
   bottom: 0;
@@ -79,6 +90,8 @@ body {
   position: absolute;
  top:-25%; /* Align with the bottom of the road */
   left: 50%; /* Align with the left of the road */
+  transform: translate(-50%,-100%);
   width: 10%;
   height: auto;
+  z-index: 0;
 }

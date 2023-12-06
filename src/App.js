@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef,useState } from 'react';
 import { gsap } from 'gsap';
 import './App.css';
 import carImage from './assets/car.png';
@@ -12,6 +12,7 @@ const App = () => {
     const animationCurrent = useRef(0);
     const mileMarker0Ref = useRef(null);
     const mileSignRef = useRef(null);
+    const [miles, setMiles] = useState(0);
     const animateText = (y) => {
         gsap.to(mainTextRef.current, {
             y: -y,
@@ -43,6 +44,9 @@ const App = () => {
             ease: "none",
 
         });
+
+        // Calculate miles based on the scroll amount
+        setMiles(Math.floor(animationCurrent.current / 50));
     }
     const handleWheel = (event) => {
         // Prevent the default scroll behavior
@@ -50,6 +54,7 @@ const App = () => {
 
         // Update the current animation value
         animationCurrent.current += event.deltaY;
+        console.log(event.deltaY)
         // Clamp the value to not go below 0
         if (animationCurrent.current < 0) {
             animationCurrent.current = 0;
@@ -67,7 +72,7 @@ const App = () => {
             animateMileMarker0(animationCurrent.current - (window.innerWidth * 0.40));
 
         }
-        if(animationCurrent.current < window.innerHeight * 0.31) {
+        if(animationCurrent.current < 190){
             animateMileSign(animationCurrent.current);
         }
     };
@@ -89,9 +94,14 @@ const App = () => {
             <div id="grass">
                 <img src={mileMarker0} alt="Mile Marker 0" id="mile-marker-0" ref={mileMarker0Ref}/>
             </div>
-            <div>
-                <img src={mileSign} alt="Mile Sign" id="mile-sign" ref={mileSignRef}/>
+            <div id="mile-sign" ref={mileSignRef}>
+                <img src={mileSign} alt="Mile Sign"/>
+            <div className="milesign-text" >
+                <p>{miles} miles</p>
             </div>
+
+            </div>
+
 
             <div id="road">
                 <div id="stripes" ref={stripesRef}></div>
