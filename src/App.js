@@ -1,63 +1,76 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css';
-
-gsap.registerPlugin(ScrollTrigger);
+import carImage from './assets/car.png';
+import backgroundImage from './assets/background.png';
 
 const App = () => {
     const mainTextRef = useRef(null);
-    const roadRef = useRef(null);
+    const carRef = useRef(null);
     const stripesRef = useRef(null);
-    useEffect(() => {
-        gsap.to(roadRef.current, {
-            x: "100%",
+    const animationCurrent = useRef(0);
+
+    const animateText = (y) => {
+        gsap.to(mainTextRef.current, {
+            y: -y,
             ease: "none",
-            scrollTrigger: {
-                trigger: ".App",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: true,
-            }
         });
-    }, []);
+    };
+
+    const animateCar = (x) => {
+        gsap.to(carRef.current, {
+            x: x,
+            ease: "none",
+        });
+    };
+
+    const animateStripes = (x) => {
+        gsap.to(stripesRef.current, {
+            backgroundPosition: `${-x}px 0`,
+            ease: "none",
+        });
+    };
 
     useEffect(() => {
         const handleWheel = (event) => {
-            // Move up when scrolling down, and vice versa
-            gsap.to(mainTextRef.current, {
-                y: "-=100", // Adjust this value to control the speed of the movement
-                ease: "none",
-            });
+            // Prevent the default scroll behavior
+            event.preventDefault();
+
+            // Update the current animation value
+            animationCurrent.current += event.deltaY;
+            // Clamp the value to not go below 0
+            if (animationCurrent.current < 0) {
+                animationCurrent.current = 0;
+            }
+
+            // Invoke animation functions
+            animateText(animationCurrent.current);
+
+            if (animationCurrent.current < window.innerWidth * 0.40) {
+                // The car should only move to a maximum of 40% of the viewport width
+                animateCar(animationCurrent.current);
+            } else {
+                // Once the car stops, start moving the stripes
+                animateStripes(animationCurrent.current - (window.innerWidth * 0.40));
+            }
         };
 
-        window.addEventListener("wheel", handleWheel);
+        window.addEventListener("wheel", handleWheel, { passive: false });
 
         return () => {
             window.removeEventListener("wheel", handleWheel);
         };
     }, []);
-    useEffect(() => {
-        ScrollTrigger.create({
-            animation: gsap.to(stripesRef.current, {
-                backgroundPosition: '100% 0', // Move the background to simulate the stripe movement
-                ease: 'none',
-                repeat: -1, // Infinite loop
-                duration: 1, // Speed of the animation
-            }),
-            trigger: '#road',
-            start: 'top bottom', // Start the animation when the top of the road hits the bottom of the viewport
-            end: 'bottom top', // End the animation when the bottom of the road leaves the top of the viewport
-            scrub: true, // Link the animation progress to the scroll position
-        });
-    }, []);
+
     return (
-        <div className="App">
+        <div className="App" style={{ backgroundImage: `url(${backgroundImage})` }}>
             <div className="main-text" ref={mainTextRef}>
                 <p>Scrolling Into the Wild</p>
             </div>
-            <div id="road" >
+            <div id="grass"></div>
+            <div id="road">
                 <div id="stripes" ref={stripesRef}></div>
+                <img src={carImage} alt="Chris's Car" id="car" ref={carRef}/>
             </div>
         </div>
     );

@@ -1,7 +1,18 @@
 /* App.css */
+@font-face {
+  font-family: 'ThaleahFat';
+  src: url('./assets/fonts/ThaleahFat.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: 'ThaleahFat', sans-serif; /* Add your custom font here */
+}
 
 .App {
-  font-family: sans-serif;
+  background-size: 100% 79%;
+    background-repeat: no-repeat;
+  font-family: 'ThaleahFat';
   overflow: hidden; /* Hide all scrollbars */
   width: 100vw;
   height: 100vh;
@@ -12,30 +23,47 @@
 }
 
 .main-text {
-  font-size: 6rem; /* Increase the font size */
+
+  font-size: 8rem; /* Increase the font size */
   text-align: center;
   color: #333; /* Adjust color as needed */
   margin: auto; /* Center text vertically */
+  margin-top: 180px;
 }
 
 #road {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 50px; /* Adjust the height as needed */
-  background: #888; /* Background of the road */
+  height: 200px; /* Adjust the height as needed */
+  background: rgb(66, 70, 84); /* Background of the road */
 }
-
+#grass {
+  position: absolute;
+  bottom: 200px; /* Align with the bottom of the road */
+  width: 100%;
+  height: 20px;
+  background: #112318; /* Background of the grass */
+}
 #stripes {
   position: absolute;
-  bottom: 25px; /* Align with the bottom of the road */
+  bottom: 100px; /* Align with the bottom of the road */
   width: 100%;
   height: 5%;
   background: repeating-linear-gradient(
           to right,
-          yellow,
-          yellow 8vw,
-          transparent 8vw,
-          transparent 20vw
+          white,
+          white 5vw,
+          transparent 2vw,
+          transparent 10vw
   );
+}
+#car {
+  position: absolute;
+  bottom: 110px; /* Position it above the road */
+  left: -600px; /* Center the car horizontally */
+  width: 590px; /* Maintain the aspect ratio */
+  height: auto; /* Example height, adjust as needed */
+  z-index: 2; /* Ensure the car is above the road and stripes */
+  overflow:hidden;
 }
