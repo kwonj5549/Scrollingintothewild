@@ -86,13 +86,13 @@ const App = () => {
             <div className="main-text" ref={mainTextRef}>
                 <p>Scrolling Into the Wild</p>
             </div>
-            <div id="grass"></div>
+            <div id="grass">
+                <img src={mileMarker0} alt="Mile Marker 0" id="mile-marker-0" ref={mileMarker0Ref}/>
+            </div>
             <div>
                 <img src={mileSign} alt="Mile Sign" id="mile-sign" ref={mileSignRef}/>
             </div>
-            <div>
-                <img src={mileMarker0} alt="Mile Marker 0" id="mile-marker-0" ref={mileMarker0Ref}/>
-            </div>
+
             <div id="road">
                 <div id="stripes" ref={stripesRef}></div>
                 <img src={carImage} alt="Chris's Car" id="car" ref={carRef}/>

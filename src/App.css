@@ -10,9 +10,9 @@ body {
 }
 
 .App {
-  background-size: 100% 79%;
+  background-size: 100% 78%;
     background-repeat: no-repeat;
-  font-family: 'ThaleahFat';
+  font-family: 'ThaleahFat', sans-serif;
   overflow: hidden; /* Hide all scrollbars */
   width: 100vw;
   height: 100vh;
@@ -28,26 +28,26 @@ body {
   text-align: center;
   color: #333; /* Adjust color as needed */
   margin: auto; /* Center text vertically */
-  margin-top: 180px;
+  margin-top: 5%;
 }
 
 #road {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 200px; /* Adjust the height as needed */
+  height: 20%; /* Adjust the height as needed */
   background: rgb(66, 70, 84); /* Background of the road */
 }
 #grass {
   position: absolute;
-  bottom: 200px; /* Align with the bottom of the road */
+  bottom: 20%; /* Align with the bottom of the road */
   width: 100%;
   height: 20px;
   background: #112318; /* Background of the grass */
 }
 #stripes {
   position: absolute;
-  bottom: 100px; /* Align with the bottom of the road */
+  bottom: 50%; /* Align with the bottom of the road */
   width: 100%;
   height: 5%;
   background: repeating-linear-gradient(
@@ -60,16 +60,16 @@ body {
 }
 #car {
   position: absolute;
-  bottom: 110px; /* Position it above the road */
-  left: -600px; /* Center the car horizontally */
-  width: 590px; /* Maintain the aspect ratio */
+  bottom: 70%; /* Position it above the road */
+  left: -31%; /* Center the car horizontally */
+  width: 30%; /* Maintain the aspect ratio */
   height: auto; /* Example height, adjust as needed */
   z-index: 10; /* Ensure the car is above the road and stripes */
   overflow:hidden;
 }
 #mile-marker-0{
   position: absolute;
-  bottom: 200px; /* Align with the bottom of the road */
+  bottom: 0%; /* Align with the bottom of the road */
   left: 80%; /* Align with the left of the road */
   width: 10%;
   height: auto;
