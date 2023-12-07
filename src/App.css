@@ -37,7 +37,7 @@ body {
   position: relative;
   top:0%; /* Align with the bottom of the road */
   /*left:; !* Align with the left of the road *!*/
-  transform: translate(22%,-155%);
+  transform: translate(10%,-155%);
   width: 100%;
   height: auto;
   z-index: 1;
@@ -91,7 +91,7 @@ body {
  top:-25%; /* Align with the bottom of the road */
   left: 50%; /* Align with the left of the road */
   transform: translate(-50%,-100%);
-  width: 10%;
+  width: 10.7%;
   height: auto;
   z-index: 0;
 }

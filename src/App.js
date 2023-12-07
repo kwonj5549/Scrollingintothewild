@@ -45,6 +45,9 @@ const App = () => {
 
         });
 
+
+    }
+    const animateMileSignText= (y) => {
         // Calculate miles based on the scroll amount
         setMiles(Math.floor(animationCurrent.current / 50));
     }
@@ -70,11 +73,13 @@ const App = () => {
             // Once the car stops, start moving the stripes
             animateStripes(animationCurrent.current - (window.innerWidth * 0.40));
             animateMileMarker0(animationCurrent.current - (window.innerWidth * 0.40));
+            animateMileSignText();
 
         }
         if(animationCurrent.current < 190){
             animateMileSign(animationCurrent.current);
         }
+
     };
     useEffect(() => {
 
