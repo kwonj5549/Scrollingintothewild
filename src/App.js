@@ -4,7 +4,7 @@ import './App.css';
 import carImage from './assets/car.png';
 import backgroundImage from './assets/background.png';
 import mileMarker0 from './assets/mile0.png';
-import mileSign from './assets/hanging-sign.png';
+import mileSign from './assets/distance_state_sign.png';
 import textDisplay1 from './assets/text_display.png';
 
 const App = () => {
@@ -144,11 +144,14 @@ const App = () => {
                     <p>{miles} miles</p>
                 </div>
             </div>
-            <div className="parentContainer" ref={textDisplay1Ref}>
-                <img src={textDisplay1}  alt="Text Display 1"/>
-                <div className="centered">
-                    <p>Chris McCandless begins his journey in the </p>
+            <div className="text-display-container" ref={textDisplay1Ref}>
+                <img src={textDisplay1} id="text-display-1" alt="Text Display 1"/>
+                <div className="display-text">
+                    <p>Chris McCandless begins his journey is Atlanta after he graduates from Emory University. He donates $25000 to Oxfam and loads up his car to start his new journey as Alexander Supertramp</p>
                 </div>
+                {/*<div className="display-text">*/}
+                {/*    <p>Chris McCandless begins his journey in the </p>*/}
+                {/*</div>*/}
             </div>
 
 
