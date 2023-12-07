@@ -15,34 +15,35 @@ const App = () => {
     const mileSignRef = useRef(null);
     const [miles, setMiles] = useState(0);
     const animationMiles = useRef(0);
+    const animationMultiplier = 15;
     const animateText = (y) => {
         gsap.to(mainTextRef.current, {
-            y: -y,
+            y: -y*animationMultiplier,
             ease: "none",
         });
     };
 
     const animateCar = (x) => {
         gsap.to(carRef.current, {
-            x: x,
+            x: x*animationMultiplier,
             ease: "none",
         });
     };
     const animateMileMarker0 = (x) => {
         gsap.to(mileMarker0Ref.current, {
-            x: -x,
+            x: -x*animationMultiplier,
             ease: "none",
         });
     }
     const animateStripes = (x) => {
         gsap.to(stripesRef.current, {
-            backgroundPosition: `${-x}px 0`,
+            backgroundPosition: `${-x*animationMultiplier}px 0`,
             ease: "none",
         });
     };
     const animateMileSign = (y) => {
         gsap.to(mileSignRef.current, {
-            y: y,
+            y: animationMultiplier*y,
             ease: "none",
 
         });
@@ -51,48 +52,40 @@ const App = () => {
     }
     const animateMileSignText= (y) => {
         // Calculate miles based on the scroll amount
-        setMiles(Math.floor(animationMiles.current / 100));
+        setMiles(Math.floor(y));
     }
     const handleWheel = (event) => {
-        // Prevent the default scroll behavior
         event.preventDefault();
 
-        // Normalize and scale down the deltaY for smoother animation
         const normalizedDeltaY = Math.min(Math.max(event.deltaY, -1), 1);
-        const scrollIncrement = normalizedDeltaY * 100;
+        const scrollIncrement = normalizedDeltaY;
 
-        // Update the current animation value
         animationCurrent.current += scrollIncrement;
 
-        // Clamp the value to not go below 0
         if (animationCurrent.current < 0) {
             animationCurrent.current = 0;
         }
 
-        // Define the threshold for car movement
-        const carMoveThreshold = window.innerWidth * 0.40;
-
-        // Animate text
+        const carMoveThreshold = window.innerWidth * 0.40 / animationMultiplier;
         animateText(animationCurrent.current);
 
-        // Animate car but stop at the threshold
         if (animationCurrent.current < carMoveThreshold) {
             animateCar(animationCurrent.current);
+            animateMileSignText(0);
         } else {
-            animateCar(carMoveThreshold);
-            // Start moving the road elements after the car reaches its threshold
-            const extraScroll = animationCurrent.current - carMoveThreshold;
+            animateCar(carMoveThreshold); // Adjusting car's final position
+            const extraScroll = (animationCurrent.current - carMoveThreshold) ;
             animateStripes(extraScroll);
             animateMileMarker0(extraScroll);
-            animationMiles.current +=scrollIncrement;
+            animationMiles.current += scrollIncrement;
             animateMileSignText(extraScroll);
         }
 
-        // Animate mile sign
-        if (animationCurrent.current < window.innerWidth * 0.12) {
+        const mileSignThreshold = window.innerWidth * 0.12 / animationMultiplier;
+        if (animationCurrent.current < mileSignThreshold) {
             animateMileSign(animationCurrent.current);
-        }else{
-            animateMileSign(window.innerWidth * 0.12);
+        } else {
+            animateMileSign(mileSignThreshold); // Adjusting mile sign's final position
         }
     };
     useEffect(() => {
