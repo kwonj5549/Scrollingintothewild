@@ -53,7 +53,7 @@ body {
   position: absolute;
   bottom: 20%; /* Align with the bottom of the road */
   width: 100%;
-  height: 20px;
+  height: 2%;
   background: #112318; /* Background of the grass */
 }
 #stripes {
@@ -91,7 +91,31 @@ body {
  top:-25%; /* Align with the bottom of the road */
   left: 50%; /* Align with the left of the road */
   transform: translate(-50%,-100%);
-  width: 10.7%;
-  height: auto;
+  width: auto;
+  height: 10.5%;
   z-index: 0;
+}
+#text-display-1{
+    position: absolute;
+  top: -36vh;
+
+    transform: translate(-100%);
+  height: 35vh;
+    width: auto;
+
+    z-index: 0;
+}
+.text-display-container {
+  left: 40%;
+  position: absolute; /* Container for image and text */
+  height: auto; /* Full-height: remove this if you want "auto" height */
+}
+.display-text {
+  position: relative; /* Position the text over the image */
+  top: -50%; /* Adjust these values as needed */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the text */
+  font-size: 2rem; /* Adjust font size as needed */
+  color: #333; /* Text color */
+  text-align: center;
 }
