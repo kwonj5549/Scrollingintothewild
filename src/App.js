@@ -144,9 +144,9 @@ const App = () => {
                     <p>{miles} miles</p>
                 </div>
             </div>
-            <div className="text-display-container" ref={textDisplay1Ref}>
-                <img src={textDisplay1} id="text-display-1" alt="Text Display 1"/>
-                <div className="display-text">
+            <div className="parentContainer" ref={textDisplay1Ref}>
+                <img src={textDisplay1}  alt="Text Display 1"/>
+                <div className="centered">
                     <p>Chris McCandless begins his journey in the </p>
                 </div>
             </div>
