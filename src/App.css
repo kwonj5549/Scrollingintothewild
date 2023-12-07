@@ -81,7 +81,7 @@ body {
 #mile-marker-0{
   position: absolute;
   bottom: 0%; /* Align with the bottom of the road */
-  left: 80%; /* Align with the left of the road */
+  left: 35%; /* Align with the left of the road */
   width: 10%;
   height: auto;
 
