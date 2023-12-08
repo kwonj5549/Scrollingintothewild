@@ -22,6 +22,7 @@ const App = () => {
     const [currentState, setcurrentState] = useState("Georgia");
     const [displayText, setDisplayText] = useState("");
     const [displayDate, setDisplayDate] = useState("");
+    const [textStyle, setTextStyle] = useState({ fontSize: '2.4rem', lineHeight: '1.6rem' });
 
     const animateText = (y) => {
         gsap.to(mainTextRef.current, {
@@ -84,6 +85,10 @@ const App = () => {
         if (shouldDisplay && currentKeyPoint) {
             setDisplayText(currentKeyPoint.text);
             setDisplayDate(currentKeyPoint.date); // Set the display date
+            setTextStyle({
+                fontSize: currentKeyPoint.textSize || '2.4rem',
+                lineHeight: currentKeyPoint.textSpacing || '1.6rem'
+            });
             const displayThreshold = window.innerHeight * 0.39 / animationMultiplier + currentKeyPoint.start;
             const offset = currentMiles - currentKeyPoint.end;
 
@@ -104,19 +109,28 @@ const App = () => {
     const displayKeyPoints = [
         {
             start: 10,
-            end: 60,
+            end: 80,
             text: "Chris McCandless begins his journey in Atlanta after he graduates from Emory University. He\n" +
                 "                        donates $25000 to Oxfam and loads up his car to start his new journey venturing into the wild to\n" +
                 "                        find a new sense of identity.",
-            date: "June 1, 1990"
+            date: "June 1, 1990",
+            textSize: "2.4rem", // Example text size
+            textSpacing: "2rem"
         },
         {
-            start: 100,
-            end: 150,
+            start: 130,
+            end: 250,
             text: "I believe McCandless embarked on this journey to escape from the societal pressures and materialism he perceived in his life and upbringing particularly his parents, which contributed to his desire to seek independence and a new identity in the wild. Krakauer's \"Into the Wild\" suggests that McCandless was motivated by a mix of youthful idealism, a quest for raw, unfiltered experiences, and the influence of transcendentalist literature. His odyssey was as much about finding himself as it was about challenging his limits and shedding what he considered the unnecessary burdens of modern life.\n",
-            date: ""
+            date: "",
+            textSize: "1.6rem", // Example text size
+            textSpacing: "1.2rem"
         },
-        {start: 200, end: 250, text: "Third milestone text", date: "August 15, 1990"},
+        {start: 300, end: 350, text: "When I started making this, I didn't realize that how long his journey was. So this might take a while", date: "",
+            textSize: "2rem", // Example text size
+            textSpacing: "1.5rem"},
+        {start: 760, end: 800, text: "McCandless reaches Dallas Texas and gets his money stolen while sleeping in the car", date: "",
+            textSize: "2rem", // Example text size
+            textSpacing: "1.5rem"},
         // ... more key points
     ];
     const handleWheel = (event) => {
@@ -207,7 +221,7 @@ const App = () => {
 
             <div className="text-display-container" ref={textDisplay1Ref}>
                 <img src={textDisplay1} id="text-display-1" alt="Text Display 1"/>
-                <div className="display-text">
+                <div className="display-text"style={{ fontSize: textStyle.fontSize, lineHeight: textStyle.lineHeight }}>
                     <div className="text-5xl">
                         <p>{displayDate}</p>
                     </div>
