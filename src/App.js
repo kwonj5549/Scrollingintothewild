@@ -20,6 +20,9 @@ const App = () => {
     const animationMultiplier = 100;
     const textDisplay1Ref = useRef(null);
     const [currentState, setcurrentState] = useState("Georgia");
+    const [displayText, setDisplayText] = useState("");
+    const [displayDate, setDisplayDate] = useState("");
+
     const animateText = (y) => {
         gsap.to(mainTextRef.current, {
             y: -y * animationMultiplier,
@@ -66,6 +69,56 @@ const App = () => {
 
         });
     }
+    const handleDisplaySign = (currentMiles) => {
+        let shouldDisplay = false;
+        let currentKeyPoint = null;
+
+        for (let keyPoint of displayKeyPoints) {
+            if (currentMiles >= keyPoint.start && currentMiles <= keyPoint.end) {
+                shouldDisplay = true;
+                currentKeyPoint = keyPoint;
+                break;
+            }
+        }
+
+        if (shouldDisplay && currentKeyPoint) {
+            setDisplayText(currentKeyPoint.text);
+            setDisplayDate(currentKeyPoint.date); // Set the display date
+            const displayThreshold = window.innerHeight * 0.39 / animationMultiplier + currentKeyPoint.start;
+            const offset = currentMiles - currentKeyPoint.end;
+
+            if (currentMiles <= displayThreshold) {
+                animateTextDisplay1(currentMiles - currentKeyPoint.start);
+            } else if (currentMiles > displayThreshold) {
+                animateTextDisplay1(displayThreshold - currentKeyPoint.start);
+            } else if (currentMiles > currentKeyPoint.end) {
+                const newYPosition = (displayThreshold - currentKeyPoint.start) - offset / 4;
+                animateTextDisplay1(newYPosition);
+            }
+        } else {
+            animateTextDisplay1(0);
+        }
+    };
+
+
+    const displayKeyPoints = [
+        {
+            start: 10,
+            end: 60,
+            text: "Chris McCandless begins his journey in Atlanta after he graduates from Emory University. He\n" +
+                "                        donates $25000 to Oxfam and loads up his car to start his new journey venturing into the wild to\n" +
+                "                        find a new sense of identity.",
+            date: "June 1, 1990"
+        },
+        {
+            start: 100,
+            end: 150,
+            text: "I believe McCandless embarked on this journey to escape from the societal pressures and materialism he perceived in his life and upbringing particularly his parents, which contributed to his desire to seek independence and a new identity in the wild. Krakauer's \"Into the Wild\" suggests that McCandless was motivated by a mix of youthful idealism, a quest for raw, unfiltered experiences, and the influence of transcendentalist literature. His odyssey was as much about finding himself as it was about challenging his limits and shedding what he considered the unnecessary burdens of modern life.\n",
+            date: ""
+        },
+        {start: 200, end: 250, text: "Third milestone text", date: "August 15, 1990"},
+        // ... more key points
+    ];
     const handleWheel = (event) => {
         event.preventDefault();
 
@@ -101,32 +154,8 @@ const App = () => {
         }
 
 
+        handleDisplaySign(animationMilesCurrent.current);
 
-
-
-        const textDisplay1Start = 10;
-        const textDisplay1End = 60;
-        const textDisplayThreshold1 = window.innerHeight * 0.39 / animationMultiplier + textDisplay1Start;
-        if (animationMilesCurrent.current >= textDisplay1Start && animationMilesCurrent.current <= textDisplay1End) {
-
-            if (animationMilesCurrent.current <= textDisplayThreshold1) {
-                // Move text display down until it reaches the movement threshold
-                animateTextDisplay1(animationMilesCurrent.current - textDisplay1Start);
-
-            } else if (animationMilesCurrent.current > textDisplayThreshold1) {
-                // Keep the text display stationary once it reaches the movement threshold
-                animateTextDisplay1(textDisplayThreshold1 - textDisplay1Start);
-
-            }
-        } else if (animationMilesCurrent.current > textDisplay1End) {
-            // Calculate the offset for moving the text display back up
-            const offset = animationMilesCurrent.current - textDisplay1End;
-            // Ensure the text display moves back up and off the screen
-            const newYPosition = (textDisplayThreshold1 - textDisplay1Start) - offset / 4;
-            animateTextDisplay1(newYPosition);
-        } else {
-            animateTextDisplay1(0);
-        }
 
     };
     useEffect(() => {
@@ -135,14 +164,14 @@ const App = () => {
         } else if (miles > 60 && miles <= 260) {
             setcurrentState("Alabama");
         } else if (miles > 260 && miles <= 437) {
-           setcurrentState("Mississippi");
-        }else if (miles > 437 && miles <= 596) {
+            setcurrentState("Mississippi");
+        } else if (miles > 437 && miles <= 596) {
             setcurrentState("Louisiana");
-        }else if (miles > 596 && miles <= 1830) {
+        } else if (miles > 596 && miles <= 1830) {
             setcurrentState("Texas");
-        }else if (miles > 1830 && miles <= 1985) {
+        } else if (miles > 1830 && miles <= 1985) {
             setcurrentState("New Mexico");
-        }else if (miles > 1985 && miles <= 2539) {
+        } else if (miles > 1985 && miles <= 2539) {
             setcurrentState("Arizona");
         }
     }, [miles]); // This useEffect will run every time 'miles' changes
@@ -180,11 +209,10 @@ const App = () => {
                 <img src={textDisplay1} id="text-display-1" alt="Text Display 1"/>
                 <div className="display-text">
                     <div className="text-5xl">
-                        <p>June 1, 1990</p>
+                        <p>{displayDate}</p>
                     </div>
-                    <p>Chris McCandless begins his journey in Atlanta after he graduates from Emory University. He
-                        donates $25000 to Oxfam and loads up his car to start his new journey venturing into the wild to
-                        find a new sense of identity.</p>
+                    {/* Display the date */}
+                    <p>{displayText}</p> {/* Display the text */}
                 </div>
 
             </div>
