@@ -151,13 +151,22 @@ const App = () => {
         {start: 300, end: 350, text: "When I started making this, I didn't realize that how long his journey was. So this might take a while", date: "",
             textSize: "2rem", // Example text size
             textSpacing: "1.5rem",
-            displaySize: { width: '25vw', height: '30vh' },
-            movementThreshold: '34',},
+            displaySize: { width: '25vw', height: '15vh' },
+            movementThreshold: '20',},
 
         {start: 760, end: 800, text: "McCandless reaches Dallas Texas and gets his money stolen while sleeping in the car", date: "",
             textSize: "2rem", // Example text size
-            textSpacing: "1.5rem"},
-        // ... more key points
+            textSpacing: "1.5rem",
+            displaySize: { width: '25vw', height: '15vh' },
+            movementThreshold: '20',
+        },
+        {start: 983, end: 1050, text: "McCandless takes a quick stop in Houston, Texas where he buries his money", date: "",
+            textSize: "2rem", // Example text size
+            textSpacing: "1.5rem",
+            displaySize: { width: '25vw', height: '15vh' },
+            movementThreshold: '20',
+        },
+
     ];
     const handleWheel = (event) => {
         event.preventDefault();
