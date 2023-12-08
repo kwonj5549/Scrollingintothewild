@@ -83,30 +83,31 @@ const App = () => {
             }
         }
 
-        if (shouldDisplay && currentKeyPoint) {
-            setDisplayText(currentKeyPoint.text);
-            setDisplayDate(currentKeyPoint.date); // Set the display date
-            setTextStyle({
-                fontSize: currentKeyPoint.textSize || '2.4rem',
-                lineHeight: currentKeyPoint.textSpacing || '1.6rem'
-            });
-            setDisplaySize(currentKeyPoint.displaySize || { width: '40vw', height: '30vh' });
-            setMovementThreshold(currentKeyPoint.movementThreshold || '30');
-            const displayThreshold = window.innerHeight * (movementThreshold/100) / animationMultiplier + currentKeyPoint.start;
-            const offset = currentMiles - currentKeyPoint.end;
+    if (shouldDisplay && currentKeyPoint) {
+        setDisplayText(currentKeyPoint.text);
+        setDisplayDate(currentKeyPoint.date); // Set the display date
+        setTextStyle({
+            fontSize: currentKeyPoint.textSize || '2.4rem',
+            lineHeight: currentKeyPoint.textSpacing || '1.6rem'
+        });
+        setDisplaySize(currentKeyPoint.displaySize || {width: '40vw', height: '30vh'});
+        setMovementThreshold(currentKeyPoint.movementThreshold || '30');
+        const displayThreshold = window.innerHeight * (movementThreshold / 100) / animationMultiplier + currentKeyPoint.start;
+        const offset = currentMiles - currentKeyPoint.end;
 
-            if (currentMiles <= displayThreshold) {
-                animateTextDisplay1(currentMiles - currentKeyPoint.start);
-            } else if (currentMiles > displayThreshold) {
-                animateTextDisplay1(displayThreshold - currentKeyPoint.start);
-            } else if (currentMiles > currentKeyPoint.end) {
-                console.log(newYPosition)
-                const newYPosition = (displayThreshold - currentKeyPoint.start) - offset / 4;
-                animateTextDisplay1(newYPosition);
-            }
-        } else {
-            animateTextDisplay1(0);
+        if (currentMiles <= displayThreshold) {
+            animateTextDisplay1(currentMiles - currentKeyPoint.start);
+        } else if (currentMiles > displayThreshold) {
+            animateTextDisplay1(displayThreshold - currentKeyPoint.start);
+        } else if (currentMiles > currentKeyPoint.end) {
+            console.log(newYPosition)
+            const newYPosition = (displayThreshold - currentKeyPoint.start) - offset / 4;
+            animateTextDisplay1(newYPosition);
         }
+    } else {
+        animateTextDisplay1(0);
+    }
+
     };
 
 
