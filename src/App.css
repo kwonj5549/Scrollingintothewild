@@ -91,14 +91,20 @@ body {
   position: absolute;
   text-align: center;
   color: black;
-  top: -36vh;
+  /*top: -36vh;*/
   left: 20vw;
   font-size: 1.9rem; /* Adjust font size as needed */
+
+    border-image-source: url('/src/assets/new_display.png'); /* Use the uploaded image path */
+    border-image-slice: 34 30 38 31 fill;
+    border-image-width: 40px 40px 40px 40px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: stretch stretch;
 }
 
 .display-text {
   position: absolute;
-  top: 7%;
+  padding-top: 5%;
   padding-left: 7%;
   padding-right: 6%;
   text-align: left;
