@@ -56,7 +56,7 @@ const App = () => {
     }
     const animateMileSignText = (y) => {
         // Calculate miles based on the scroll amount
-        animationMilesCurrent.current= Math.floor(y);
+        animationMilesCurrent.current = Math.floor(y);
         setMiles(Math.floor(y));
     }
     const animateTextDisplay1 = (y) => {
@@ -96,13 +96,17 @@ const App = () => {
         const mileSignThreshold = window.innerHeight * 0.32 / animationMultiplier;
         if (animationCurrent.current < mileSignThreshold) {
             animateMileSign(animationCurrent.current);
-        }
-        else {
+        } else {
             animateMileSign(mileSignThreshold); // Adjusting mile sign's final position
         }
-        const textDisplay1Start= 10;
-        const textDisplay1End= 60;
-        const textDisplayThreshold1 = window.innerHeight* 0.39 / animationMultiplier+textDisplay1Start;
+
+
+
+
+
+        const textDisplay1Start = 10;
+        const textDisplay1End = 60;
+        const textDisplayThreshold1 = window.innerHeight * 0.39 / animationMultiplier + textDisplay1Start;
         if (animationMilesCurrent.current >= textDisplay1Start && animationMilesCurrent.current <= textDisplay1End) {
 
             if (animationMilesCurrent.current <= textDisplayThreshold1) {
@@ -118,13 +122,30 @@ const App = () => {
             // Calculate the offset for moving the text display back up
             const offset = animationMilesCurrent.current - textDisplay1End;
             // Ensure the text display moves back up and off the screen
-            const newYPosition = (textDisplayThreshold1 - textDisplay1Start) - offset/4;
+            const newYPosition = (textDisplayThreshold1 - textDisplay1Start) - offset / 4;
             animateTextDisplay1(newYPosition);
-        }else{
+        } else {
             animateTextDisplay1(0);
         }
 
     };
+    useEffect(() => {
+        if (miles > 0 && miles <= 61) {
+            setcurrentState("Georgia");
+        } else if (miles > 60 && miles <= 260) {
+            setcurrentState("Alabama");
+        } else if (miles > 260 && miles <= 437) {
+           setcurrentState("Mississippi");
+        }else if (miles > 437 && miles <= 596) {
+            setcurrentState("Louisiana");
+        }else if (miles > 596 && miles <= 1830) {
+            setcurrentState("Texas");
+        }else if (miles > 1830 && miles <= 1985) {
+            setcurrentState("New Mexico");
+        }else if (miles > 1985 && miles <= 2539) {
+            setcurrentState("Arizona");
+        }
+    }, [miles]); // This useEffect will run every time 'miles' changes
     useEffect(() => {
 
 
@@ -146,11 +167,11 @@ const App = () => {
                 <div className="mile-sign-text">
                     <p>Distance Traveled: </p>
                     <div className="text-5xl">
-                    <p>{miles} miles</p>
+                        <p>{miles} miles</p>
                     </div>
                     <p>Current State: </p>
                     <div className="text-5xl">
-                    <p>{currentState}</p>
+                        <p>{currentState}</p>
                     </div>
                 </div>
             </div>
@@ -159,16 +180,14 @@ const App = () => {
                 <img src={textDisplay1} id="text-display-1" alt="Text Display 1"/>
                 <div className="display-text">
                     <div className="text-5xl">
-                    <p>June 1, 1990</p>
-                        </div>
-                    <p>Chris McCandless begins his journey in Atlanta after he graduates from Emory University. He donates $25000 to Oxfam and loads up his car to start his new journey venturing into the wild to find a new sense of identity.</p>
+                        <p>June 1, 1990</p>
+                    </div>
+                    <p>Chris McCandless begins his journey in Atlanta after he graduates from Emory University. He
+                        donates $25000 to Oxfam and loads up his car to start his new journey venturing into the wild to
+                        find a new sense of identity.</p>
                 </div>
 
             </div>
-
-
-
-
 
 
             <div id="grass">
