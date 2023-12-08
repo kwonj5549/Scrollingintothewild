@@ -25,6 +25,7 @@ const App = () => {
     const [textStyle, setTextStyle] = useState({ fontSize: '2.4rem', lineHeight: '1.6rem' });
     const [displaySize, setDisplaySize] = useState({ width: '40vw', height: '30vh' });
     const [movementThreshold, setMovementThreshold] = useState('30');
+    const textDisplayYRef= useRef(0);
     const animateText = (y) => {
         gsap.to(mainTextRef.current, {
             y: -y * animationMultiplier,
@@ -97,15 +98,29 @@ const App = () => {
 
         if (currentMiles <= displayThreshold) {
             animateTextDisplay1(currentMiles - currentKeyPoint.start);
+            textDisplayYRef.current = (currentMiles - currentKeyPoint.start);
         } else if (currentMiles > displayThreshold) {
             animateTextDisplay1(displayThreshold - currentKeyPoint.start);
+            textDisplayYRef.current = (displayThreshold - currentKeyPoint.start);
         } else if (currentMiles > currentKeyPoint.end) {
             console.log(newYPosition)
             const newYPosition = (displayThreshold - currentKeyPoint.start) - offset / 4;
             animateTextDisplay1(newYPosition);
         }
     } else {
-        animateTextDisplay1(0);
+        if(textDisplayYRef.current > 0) {
+            const newYPosition = textDisplayYRef.current-0.4;
+            if(newYPosition < 0) {
+            console.log(newYPosition)
+                animateTextDisplay1(0);
+                textDisplayYRef.current = 0;
+            }
+                else
+                {
+                    animateTextDisplay1(newYPosition);
+                    textDisplayYRef.current = textDisplayYRef.current - 0.4;
+                }
+        }
     }
 
     };
@@ -129,13 +144,16 @@ const App = () => {
             text: "I believe McCandless embarked on this journey to escape from the societal pressures and materialism he perceived in his life and upbringing particularly his parents, which contributed to his desire to seek independence and a new identity in the wild. Krakauer's \"Into the Wild\" suggests that McCandless was motivated by a mix of youthful idealism, a quest for raw, unfiltered experiences, and the influence of transcendentalist literature. His odyssey was as much about finding himself as it was about challenging his limits and shedding what he considered the unnecessary burdens of modern life.\n",
             date: "",
             textSize: "1.6rem", // Example text size
-            textSpacing: "1.2rem",
-            displaySize: { width: '40vw', height: '30vh' },
-            movementThreshold: '30',
+            textSpacing: "1.3rem",
+            displaySize: { width: '25vw', height: '30vh' },
+            movementThreshold: '34',
         },
         {start: 300, end: 350, text: "When I started making this, I didn't realize that how long his journey was. So this might take a while", date: "",
             textSize: "2rem", // Example text size
-            textSpacing: "1.5rem"},
+            textSpacing: "1.5rem",
+            displaySize: { width: '25vw', height: '30vh' },
+            movementThreshold: '34',},
+
         {start: 760, end: 800, text: "McCandless reaches Dallas Texas and gets his money stolen while sleeping in the car", date: "",
             textSize: "2rem", // Example text size
             textSpacing: "1.5rem"},
