@@ -56,6 +56,7 @@ const App = () => {
     }
     const animateMileSignText = (y) => {
         // Calculate miles based on the scroll amount
+        animationMilesCurrent.current= Math.floor(y);
         setMiles(Math.floor(y));
     }
     const animateTextDisplay1 = (y) => {
@@ -88,7 +89,7 @@ const App = () => {
             const extraScroll = (animationCurrent.current - carMoveThreshold);
             animateStripes(extraScroll);
             animateMileMarker0(extraScroll);
-            animationMilesCurrent.current += scrollIncrement;
+            // animationMilesCurrent.current += scrollIncrement;
             animateMileSignText(extraScroll);
         }
 
@@ -102,20 +103,20 @@ const App = () => {
         const textDisplay1Start= 10;
         const textDisplay1End= 60;
         const textDisplayThreshold1 = window.innerHeight* 0.39 / animationMultiplier+textDisplay1Start;
-        if (animationCurrent.current >= textDisplay1Start && animationCurrent.current <= textDisplay1End) {
+        if (animationMilesCurrent.current >= textDisplay1Start && animationMilesCurrent.current <= textDisplay1End) {
 
-            if (animationCurrent.current <= textDisplayThreshold1) {
+            if (animationMilesCurrent.current <= textDisplayThreshold1) {
                 // Move text display down until it reaches the movement threshold
-                animateTextDisplay1(animationCurrent.current - textDisplay1Start);
+                animateTextDisplay1(animationMilesCurrent.current - textDisplay1Start);
 
-            } else if (animationCurrent.current > textDisplayThreshold1) {
+            } else if (animationMilesCurrent.current > textDisplayThreshold1) {
                 // Keep the text display stationary once it reaches the movement threshold
                 animateTextDisplay1(textDisplayThreshold1 - textDisplay1Start);
 
             }
-        } else if (animationCurrent.current > textDisplay1End) {
+        } else if (animationMilesCurrent.current > textDisplay1End) {
             // Calculate the offset for moving the text display back up
-            const offset = animationCurrent.current - textDisplay1End;
+            const offset = animationMilesCurrent.current - textDisplay1End;
             // Ensure the text display moves back up and off the screen
             const newYPosition = (textDisplayThreshold1 - textDisplay1Start) - offset/4;
             animateTextDisplay1(newYPosition);
