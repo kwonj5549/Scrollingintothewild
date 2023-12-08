@@ -16,9 +16,10 @@ const App = () => {
     const mileMarker0Ref = useRef(null);
     const mileSignRef = useRef(null);
     const [miles, setMiles] = useState(0);
-    const animationMiles = useRef(0);
+    const animationMilesCurrent = useRef(0);
     const animationMultiplier = 100;
     const textDisplay1Ref = useRef(null);
+    const [currentState, setcurrentState] = useState("Georgia");
     const animateText = (y) => {
         gsap.to(mainTextRef.current, {
             y: -y * animationMultiplier,
@@ -87,35 +88,36 @@ const App = () => {
             const extraScroll = (animationCurrent.current - carMoveThreshold);
             animateStripes(extraScroll);
             animateMileMarker0(extraScroll);
-            animationMiles.current += scrollIncrement;
+            animationMilesCurrent.current += scrollIncrement;
             animateMileSignText(extraScroll);
         }
 
-        const mileSignThreshold = window.innerHeight * 0.12 / animationMultiplier;
+        const mileSignThreshold = window.innerHeight * 0.32 / animationMultiplier;
         if (animationCurrent.current < mileSignThreshold) {
             animateMileSign(animationCurrent.current);
-        } else {
+        }
+        else {
             animateMileSign(mileSignThreshold); // Adjusting mile sign's final position
         }
-        const textDisplayStart= 10;
-        const textDisplayEnd= 60;
-        const textDisplayThreshold1 = window.innerHeight* 0.39 / animationMultiplier+textDisplayStart;
-        if (animationCurrent.current >= textDisplayStart && animationCurrent.current <= textDisplayEnd) {
+        const textDisplay1Start= 10;
+        const textDisplay1End= 60;
+        const textDisplayThreshold1 = window.innerHeight* 0.39 / animationMultiplier+textDisplay1Start;
+        if (animationCurrent.current >= textDisplay1Start && animationCurrent.current <= textDisplay1End) {
 
             if (animationCurrent.current <= textDisplayThreshold1) {
                 // Move text display down until it reaches the movement threshold
-                animateTextDisplay1(animationCurrent.current - textDisplayStart);
+                animateTextDisplay1(animationCurrent.current - textDisplay1Start);
 
             } else if (animationCurrent.current > textDisplayThreshold1) {
                 // Keep the text display stationary once it reaches the movement threshold
-                animateTextDisplay1(textDisplayThreshold1 - textDisplayStart);
+                animateTextDisplay1(textDisplayThreshold1 - textDisplay1Start);
 
             }
-        } else if (animationCurrent.current > textDisplayEnd) {
+        } else if (animationCurrent.current > textDisplay1End) {
             // Calculate the offset for moving the text display back up
-            const offset = animationCurrent.current - textDisplayEnd;
+            const offset = animationCurrent.current - textDisplay1End;
             // Ensure the text display moves back up and off the screen
-            const newYPosition = (textDisplayThreshold1 - textDisplayStart) - offset/4;
+            const newYPosition = (textDisplayThreshold1 - textDisplay1Start) - offset/4;
             animateTextDisplay1(newYPosition);
         }else{
             animateTextDisplay1(0);
@@ -138,20 +140,29 @@ const App = () => {
                 <p>Scrolling Into the Wild</p>
             </div>
 
-            <div id="mile-sign" ref={mileSignRef}>
-                <img src={mileSign} alt="Mile Sign"/>
-                <div className="milesign-text">
+            <div className="mile-sign-container" ref={mileSignRef}>
+                <img id='mile-sign-counter' src={mileSign} alt="Mile Sign"/>
+                <div className="mile-sign-text">
+                    <p>Distance Traveled: </p>
+                    <div className="text-5xl">
                     <p>{miles} miles</p>
+                    </div>
+                    <p>Current State: </p>
+                    <div className="text-5xl">
+                    <p>{currentState}</p>
+                    </div>
                 </div>
             </div>
+
             <div className="text-display-container" ref={textDisplay1Ref}>
                 <img src={textDisplay1} id="text-display-1" alt="Text Display 1"/>
                 <div className="display-text">
-                    <p>Chris McCandless begins his journey is Atlanta after he graduates from Emory University. He donates $25000 to Oxfam and loads up his car to start his new journey as Alexander Supertramp</p>
+                    <div className="text-5xl">
+                    <p>June 1, 1990</p>
+                        </div>
+                    <p>Chris McCandless begins his journey in Atlanta after he graduates from Emory University. He donates $25000 to Oxfam and loads up his car to start his new journey venturing into the wild to find a new sense of identity.</p>
                 </div>
-                {/*<div className="display-text">*/}
-                {/*    <p>Chris McCandless begins his journey in the </p>*/}
-                {/*</div>*/}
+
             </div>
 
 

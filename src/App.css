@@ -30,18 +30,7 @@ body {
   margin: auto; /* Center text vertically */
   margin-top: 5%;
 }
-.milesign-text{
-  font-size: 2rem; /* Increase the font size */
 
-  color: #333; /* Adjust color as needed */
-  position: relative;
-  top:0%; /* Align with the bottom of the road */
-  /*left:; !* Align with the left of the road *!*/
-  transform: translate(10%,-155%);
-  width: 100%;
-  height: auto;
-  z-index: 1;
-}
 #road {
   position: absolute;
   bottom: 0;
@@ -86,15 +75,7 @@ body {
   height: auto;
 
 }
-#mile-sign{
-  position: absolute;
- top:-25%; /* Align with the bottom of the road */
-  left: 50%; /* Align with the left of the road */
-  transform: translate(-50%,-100%);
-  width: auto;
-  height: 10.5%;
-  z-index: 0;
-}
+
 #text-display-1{
   height: 35vh;
   width: auto;
@@ -107,14 +88,35 @@ body {
   text-align: center;
   color: black;
   top: -36vh;
-  left: 40vh;
-  font-size: 2rem; /* Adjust font size as needed */
+  left: 20vw;
+  font-size: 1.9rem; /* Adjust font size as needed */
 }
 
 .display-text {
   position: absolute;
   top: 6%;
+  padding-left: 7%;
+  padding-right: 6%;
+  text-align: left;
+  line-height: 2rem;
+}
 
-  padding-left: 5%;
-  padding-right: 5%;
+#mile-sign-counter{
+  height: 28vh;
+  width: auto;
+}
+.mile-sign-container {
+  position: absolute;
+  text-align: center;
+  color: black;
+  top: -29vh;
+  left: 80vw;
+  font-size: 1.75rem; /* Adjust font size as needed */
+}
+.mile-sign-text {
+  position: absolute;
+  top: 14%;
+  padding-left: 14%;
+  padding-right: 8%;
+  text-align: left;
 }
