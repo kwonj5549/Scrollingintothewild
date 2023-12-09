@@ -134,7 +134,7 @@ const App = () => {
                 "                        donates $25000 to Oxfam and loads up his car to start his new journey venturing into the wild to\n" +
                 "                        find a new sense of identity.",
             date: "June 1, 1990",
-            textSize: "2rem", // Example text size
+            textSize: "1.7vw", // Example text size
             textSpacing: "1.8rem",
       movementThreshold: '34'
         },
