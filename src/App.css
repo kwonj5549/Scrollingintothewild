@@ -97,7 +97,7 @@ body {
 
     border-image-source: url('/src/assets/new_display.png'); /* Use the uploaded image path */
     border-image-slice: 34 30 38 31 fill;
-    border-image-width: 40px 40px 40px 40px;
+    border-image-width: 4vh 4vh 4vh 4vh;
     border-image-outset: 0px 0px 0px 0px;
     border-image-repeat: stretch stretch;
 }
@@ -117,7 +117,7 @@ body {
   padding-top: 2px;
   /*padding-left: ;*/
   padding-right: 6%;
-  margin-bottom: 2%;
+  margin-bottom: 1vh;
   text-align: left;
   line-height: 2rem;
   font-family: cpixel,sans-serif;

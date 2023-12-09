@@ -135,7 +135,7 @@ const App = () => {
                 "                        find a new sense of identity.",
             date: "June 1, 1990",
             textSize: "3.5vh", // Example text size
-            textSpacing: "1.8rem",
+            textSpacing: "3.5vh",
       movementThreshold: '34'
         },
         {
