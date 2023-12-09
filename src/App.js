@@ -134,8 +134,8 @@ const App = () => {
                 "                        donates $25000 to Oxfam and loads up his car to start his new journey venturing into the wild to\n" +
                 "                        find a new sense of identity.",
             date: "June 1, 1990",
-            textSize: "2.4rem", // Example text size
-            textSpacing: "2rem",
+            textSize: "2rem", // Example text size
+            textSpacing: "1.8rem",
       movementThreshold: '34'
         },
         {
@@ -244,7 +244,7 @@ const App = () => {
                 <img id='mile-sign-counter' src={mileSign} alt="Mile Sign"/>
                 <div className="mile-sign-text">
                     <p>Distance Traveled: </p>
-                    <div className="text-5xl">
+                    <div className="text-5xl" >
                         <p>{miles} miles</p>
                     </div>
                     <p>Current State: </p>

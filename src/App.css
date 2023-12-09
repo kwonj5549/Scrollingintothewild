@@ -104,8 +104,8 @@ body {
 
 .display-text {
   position: absolute;
-  padding-top: 7%;
-  padding-left: 7%;
+  padding-top: 44px;
+  padding-left: 44px;
   padding-right: 6%;
   text-align: left;
   line-height: 2rem;
@@ -115,7 +115,7 @@ body {
 
 #mile-sign-counter{
   height: 28vh;
-  width: auto;
+  width: 18vw;
 }
 .mile-sign-container {
   position: absolute;
@@ -123,7 +123,7 @@ body {
   color: black;
   top: -29vh;
   left: 80vw;
-  font-size: 1.75rem; /* Adjust font size as needed */
+  font-size: 1.5rem; /* Adjust font size as needed */
 }
 .mile-sign-text {
   position: absolute;
