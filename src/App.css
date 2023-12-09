@@ -103,7 +103,7 @@ body {
 }
 
 .display-text {
-  position: absolute;
+  position: relative;
   padding-top: 36px;
   padding-left: 42px;
   padding-right: 6%;
@@ -112,7 +112,17 @@ body {
   font-family: cpixel,sans-serif;
   z-index: 2;
 }
-
+.date-text{
+  position: relative;
+  padding-top: 2px;
+  /*padding-left: ;*/
+  padding-right: 6%;
+  margin-bottom: 2%;
+  text-align: left;
+  line-height: 2rem;
+  font-family: cpixel,sans-serif;
+  z-index: 2;
+}
 #mile-sign-counter{
   height: 28vh;
   width: 18vw;
