@@ -104,8 +104,8 @@ body {
 
 .display-text {
   position: relative;
-  padding-top: 4vh;
-  padding-left: 4vh;
+  padding-top: 1vh;
+  padding-left: 4.5vh;
   padding-right: 6%;
   text-align: left;
   line-height: 2rem;
@@ -114,10 +114,11 @@ body {
 }
 .date-text{
   position: relative;
-  padding-top: 2px;
+  padding-top: 4vh;
+  padding-left: 4.5vh;
   /*padding-left: ;*/
   padding-right: 6%;
-  margin-bottom: 1vh;
+  /*margin-bottom: 1vh;*/
   text-align: left;
   line-height: 2rem;
   font-family: cpixel,sans-serif;

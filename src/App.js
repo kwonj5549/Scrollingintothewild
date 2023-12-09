@@ -261,10 +261,11 @@ const App = () => {
 
             }}>
                 {/*<img  id="text-display-1" alt="Text Display 1" style={{ width: '100%', height: '100%' }}/>*/}
+                <div className="date-text" style={{fontSize: '5vh', paddingBottom:'2px'}}>
+                    <p>{displayDate}</p>
+                </div>
                 <div className="display-text" style={{ fontSize: textStyle.fontSize, lineHeight: textStyle.lineHeight }}>
-                    <div className="date-text" style={{fontSize: '5vh', paddingBottom:'2px'}}>
-                        <p>{displayDate}</p>
-                    </div>
+
                     {/* Display the date */}
                     <p>{displayText}</p> {/* Display the text */}
                 </div>
