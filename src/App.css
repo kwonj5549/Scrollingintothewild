@@ -104,8 +104,8 @@ body {
 
 .display-text {
   position: relative;
-  padding-top: 36px;
-  padding-left: 42px;
+  padding-top: 4vh;
+  padding-left: 4vh;
   padding-right: 6%;
   text-align: left;
   line-height: 2rem;
