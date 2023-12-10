@@ -28,7 +28,7 @@ body {
 
 .main-text {
 
-  font-size: 8rem; /* Increase the font size */
+  font-size: 15vh; /* Increase the font size */
   text-align: center;
   color: #333; /* Adjust color as needed */
   margin: auto; /* Center text vertically */
@@ -134,7 +134,8 @@ body {
   color: black;
   top: -29vh;
   left: 80vw;
-  font-size: 1.5rem; /* Adjust font size as needed */
+  font-size: 1.5vw; /* Adjust font size as needed */
+  line-height: 5vh;
 }
 .mile-sign-text {
   position: absolute;
@@ -142,4 +143,6 @@ body {
   padding-left: 14%;
   padding-right: 8%;
   text-align: left;
+
+
 }
