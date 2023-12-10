@@ -6,7 +6,7 @@ import backgroundImage from './assets/background.png';
 import mileMarker0 from './assets/mile0.png';
 import mileSign from './assets/distance_state_sign.png';
 // import textDisplay1 from './assets/text_display.png';
-
+import GoogleMapComponent from './GoogleMapComponent';
 const App = () => {
     const mainTextRef = useRef(null);
     const carRef = useRef(null);
@@ -435,8 +435,10 @@ const App = () => {
     const adjustedTop = `-${parseInt(displaySize.height, 10) + 1}vh`;
     return (
         <div className="App" style={{backgroundImage: `url(${backgroundImage})`}}>
+            <GoogleMapComponent />
             <div className="main-text" ref={mainTextRef}>
                 <p>Scrolling Into the Wild</p>
+
             </div>
 
             <div className="mile-sign-container" ref={mileSignRef}>
