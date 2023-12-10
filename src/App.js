@@ -435,7 +435,7 @@ const App = () => {
     const adjustedTop = `-${parseInt(displaySize.height, 10) + 1}vh`;
     return (
         <div className="App" style={{backgroundImage: `url(${backgroundImage})`}}>
-            <GoogleMapComponent />
+            <GoogleMapComponent animationMilesCurrent={animationMilesCurrent} />
             <div className="main-text" ref={mainTextRef}>
                 <p>Scrolling Into the Wild</p>
 

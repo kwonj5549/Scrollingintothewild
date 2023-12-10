@@ -53,10 +53,10 @@ const GoogleMapComponent = () => {
             var currentPathIndex = 0;
 
             function generatePath() {
-                // Convert waypoints to LatLng objects
-                console.log(waypoints);
-                console.log(typeof waypoints);
                 const googleWaypoints = waypoints.map(wp => new google.maps.LatLng(wp.lat, wp.lng));
+
+                // Populate routePath with the waypoints
+                routePath = googleWaypoints;
 
                 // Create a new Polyline object
                 const path = new google.maps.Polyline({
@@ -70,6 +70,7 @@ const GoogleMapComponent = () => {
                 path.setMap(map);
             }
             generatePath();
+
             function animateRoute(result) {
                 directionsRenderer.setDirections(result);
                 routePath = [];
@@ -99,7 +100,6 @@ const GoogleMapComponent = () => {
                 }
                 return null;
             }
-
             function moveMarkerToPosition(position) {
                 var latlng = new google.maps.LatLng(position.lat(), position.lng());
                 marker.setPosition(latlng);
@@ -126,7 +126,7 @@ const GoogleMapComponent = () => {
         });
     }, []);
 
-    return <div ref={mapRef} style={{ width: '100%', height: '400px' }} />;
+    return <div ref={mapRef} style={{ top: '4vh',left: '50vw', width: '30vw', height: '30vh' }} />;
 };
 
 export default GoogleMapComponent;

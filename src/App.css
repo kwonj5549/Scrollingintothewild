@@ -92,7 +92,7 @@ body {
   text-align: center;
   color: black;
   /*top: -36vh;*/
-  left: 20vw;
+  left: 10vw;
   font-size: 1.9rem; /* Adjust font size as needed */
 
     border-image-source: url('/src/assets/new_display.png'); /* Use the uploaded image path */
