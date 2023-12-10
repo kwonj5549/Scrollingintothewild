@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import markerAnimate from './markerAnimate'; // Adjust the path as needed
 import waypoints from './waypoints.json';
+
 const loadGoogleMapsScript = (callback) => {
     if (window.google && window.google.maps) {
         callback();
@@ -24,23 +25,23 @@ const GoogleMapComponent = () => {
     useEffect(() => {
         loadGoogleMapsScript(() => {
             const google = window.google;
-            const startLocation = new google.maps.LatLng(53.871963457471786, 10.689697265625);
+
+            // Set start location to the first waypoint
+            const firstWaypoint = waypoints[0];
+            const startLocation = new google.maps.LatLng(firstWaypoint.lat, firstWaypoint.lng);
+
             const mapOptions = {
                 zoom: 4,
                 center: startLocation
             };
             const map = new google.maps.Map(mapRef.current, mapOptions);
 
+            // Set marker at the start location
             const marker = new google.maps.Marker({
                 position: startLocation,
                 map: map
             });
 
-            var waypoints = [
-                { location: new google.maps.LatLng(53.5511, 9.9937), stopover: true },
-                { location: new google.maps.LatLng(52.5200, 13.4050), stopover: true },
-                // Add more waypoints as needed
-            ];
             var directionsService = new google.maps.DirectionsService();
             var directionsRenderer = new google.maps.DirectionsRenderer({
                 polylineOptions: {
@@ -48,26 +49,27 @@ const GoogleMapComponent = () => {
                 }
             });
             directionsRenderer.setMap(map);
-
             var routePath = [];
             var currentPathIndex = 0;
 
-            function generatePath(startLatLng, endLatLng) {
-                var request = {
-                    origin: startLatLng,
-                    destination: endLatLng,
-                    waypoints: waypoints,
-                    optimizeWaypoints: false,
-                    travelMode: 'DRIVING'
-                };
+            function generatePath() {
+                // Convert waypoints to LatLng objects
+                console.log(waypoints);
+                console.log(typeof waypoints);
+                const googleWaypoints = waypoints.map(wp => new google.maps.LatLng(wp.lat, wp.lng));
 
-                directionsService.route(request, function (result, status) {
-                    if (status === 'OK') {
-                        animateRoute(result);
-                    }
+                // Create a new Polyline object
+                const path = new google.maps.Polyline({
+                    path: googleWaypoints,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
                 });
-            }
 
+                path.setMap(map);
+            }
+            generatePath();
             function animateRoute(result) {
                 directionsRenderer.setDirections(result);
                 routePath = [];
@@ -115,7 +117,7 @@ const GoogleMapComponent = () => {
             document.addEventListener('keydown', handleKeyPress);
 
             // Start the path generation
-            generatePath(startLocation, new google.maps.LatLng(52.355, 9.717));
+            // generatePath(startLocation, new google.maps.LatLng(33.745908,-84.389955));
 
             // Clean up event listener on unmount
             return () => {
