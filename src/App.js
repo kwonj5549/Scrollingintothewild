@@ -27,6 +27,7 @@ const App = () => {
     const [movementThreshold, setMovementThreshold] = useState('34');
     const textDisplayYRef= useRef(0);
     const [scrollMultiplier, setScrollMultiplier] = useState(1);
+    const [scrollMiles, setScrollMiles] = useState(0);
     const animateText = (y) => {
         gsap.to(mainTextRef.current, {
             y: -y * animationMultiplier,
@@ -64,7 +65,9 @@ const App = () => {
     const animateMileSignText = (y) => {
         // Calculate miles based on the scroll amount
         animationMilesCurrent.current = Math.floor(y);
+
         setMiles(Math.floor(y));
+        console.log(miles)
     }
     const animateTextDisplay1 = (y) => {
         gsap.to(textDisplay1Ref.current, {
@@ -435,7 +438,7 @@ const App = () => {
     const adjustedTop = `-${parseInt(displaySize.height, 10) + 1}vh`;
     return (
         <div className="App" style={{backgroundImage: `url(${backgroundImage})`}}>
-            <GoogleMapComponent animationMilesCurrent={animationMilesCurrent} />
+            <GoogleMapComponent miles={miles} />
             <div className="main-text" ref={mainTextRef}>
                 <p>Scrolling Into the Wild</p>
 
