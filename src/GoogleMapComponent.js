@@ -26,8 +26,6 @@ const GoogleMapComponent = ({miles}) => {
     const mapRef = useRef(null);
     const mapInstanceRef = useRef(null);
     const previousMilesRef = useRef(0);
-    const markerHistoryRef = useRef([]);
-
     useEffect(() => {
         loadGoogleMapsScript(() => {
             const google = window.google;
@@ -85,57 +83,42 @@ const GoogleMapComponent = ({miles}) => {
 
         // Calculate the difference in miles
         const milesDifference = miles - previousMilesRef.current;
+        console.log(milesDifference)
         previousMilesRef.current = miles; // Update the previous miles
 
         function moveMarkerToPosition(position) {
             const latlng = new google.maps.LatLng(position.lat(), position.lng());
             marker.setPosition(latlng);
             map.setCenter(latlng);
-            markerHistoryRef.current.push(latlng); // add to history
         }
         function findNextPosition(currentPosition, distance) {
-            const currentLatlng = new google.maps.LatLng(currentPosition.lat(), currentPosition.lng());
+            const google = window.google;
+            let currentLatlng = new google.maps.LatLng(currentPosition.lat(), currentPosition.lng());
 
-            if (distance >= 0) {
-                return calculateForwardMovement(currentLatlng, distance);
-
-            } else {
-                return moveBack();
-            }
-        }
-
-        function calculateForwardMovement(currentLatlng, distance) {
             let accumulatedDistance = 0;
-            let lastValidLatlng = currentLatlng;
+            let nextIndex = distance >= 0 ? currentPathIndex : currentPathIndex - 1;
+            let direction = distance >= 0 ? 1 : -1;  // 1 for forward, -1 for backward
 
-            for (let i = currentPathIndex; i < routePath.length; i++) {
-                const pathLatlng = new google.maps.LatLng(routePath[i].lat(), routePath[i].lng());
-                const segmentDistance = google.maps.geometry.spherical.computeDistanceBetween(lastValidLatlng, pathLatlng);
+            while (distance !== 0 && nextIndex >= 0 && nextIndex < routePath.length) {
+                const nextLatlng = new google.maps.LatLng(routePath[nextIndex].lat(), routePath[nextIndex].lng());
+                const segmentDistance = google.maps.geometry.spherical.computeDistanceBetween(currentLatlng, nextLatlng);
 
-                if (accumulatedDistance + segmentDistance >= distance) {
-                    // Interpolate the next position on this segment
-                    const fraction = (distance - accumulatedDistance) / segmentDistance;
-                    currentPathIndex = i;
-                    const result = interpolate(lastValidLatlng, pathLatlng, fraction);
-                    markerHistoryRef.current.push(lastValidLatlng); // add to history
-                    return result;
+                if (Math.abs(distance) <= segmentDistance + accumulatedDistance) {
+                    // Found the segment where the marker should move
+                    const remainingDistance = Math.abs(distance) - accumulatedDistance;
+                    const fraction = remainingDistance / segmentDistance;
+                    currentPathIndex = direction === 1 ? nextIndex : nextIndex + 1;
+                    return interpolate(currentLatlng, nextLatlng, fraction);
                 }
 
                 accumulatedDistance += segmentDistance;
-                lastValidLatlng = pathLatlng;
-            }
-            return null;
-        }
-
-        function moveBack() {
-            if (markerHistoryRef.current.length < 2) {
-                return null; // or handle this case differently
+                currentLatlng = nextLatlng;
+                nextIndex += direction;
             }
 
-            // remove last point from history
-            markerHistoryRef.current.pop();
-            return markerHistoryRef.current.pop();
+            return null; // Return null if the position cannot be found
         }
+
         function interpolate(start, end, fraction) {
             const lat = start.lat() + (end.lat() - start.lat()) * fraction;
             const lng = start.lng() + (end.lng() - start.lng()) * fraction;

@@ -74,7 +74,7 @@ const App = () => {
         animationMilesCurrent.current = Math.floor(y);
 
         setMiles(Math.floor(y));
-        console.log(miles)
+        // console.log(miles)
     }
     const animateTextDisplay1 = (y) => {
         gsap.to(textDisplay1Ref.current, {
@@ -130,7 +130,7 @@ const App = () => {
         if(textDisplayYRef.current > 0) {
             const newYPosition = textDisplayYRef.current-0.4;
             if(newYPosition < 0) {
-            console.log(newYPosition)
+
                 animateTextDisplay1(0);
                 textDisplayYRef.current = 0;
             }
@@ -365,84 +365,88 @@ const App = () => {
 
     };
     useEffect(() => {
-        if (miles > 0 && miles <= 61) {
+        if (miles > 0 && miles <= 63) {
             setcurrentState("Georgia");
-        } else if (miles > 60 && miles <= 260) {
+        } else if (miles > 63 && miles <= 282) {
             setcurrentState("Alabama");
-        } else if (miles > 260 && miles <= 437) {
+        } else if (miles > 282 && miles <= 437) {
             setcurrentState("Mississippi");
-        } else if (miles > 437 && miles <= 596) {
+        } else if (miles > 437 && miles <= 618) {
             setcurrentState("Louisiana");
-        } else if (miles > 596 && miles <= 1830) {
+        } else if (miles > 618 && miles <= 1860) {
             setcurrentState("Texas");
-        } else if (miles > 1830 && miles <= 1985) {
+        } else if (miles > 1860 && miles <= 2024) {
             setcurrentState("New Mexico");
-        } else if (miles > 1985 && miles <= 2539) {
+        } else if (miles > 2024 && miles <= 2589) {
             setcurrentState("Arizona");
-        }else if (miles> 2539 && miles <= 3008) {
+        }else if (miles> 2589 && miles <= 3142) {
             setcurrentState("Nevada");
-
-        }else if (miles> 3008 && miles <= 3411) {
+        }else if (miles> 3142 && miles <= 3705) {
         setcurrentState("California");
-
     }
-        else if(miles> 3411 && miles <= 3742) {
+        else if(miles> 3705 && miles <= 4093) {
             setcurrentState("Oregon");
-        }else if(miles> 3742 && miles <= 4266) {
+        }else if(miles> 4093 && miles <= 4794) {
             setcurrentState("Washington");
-        }else if(miles> 4266 && miles <= 4316) {
+        }else if(miles> 4794 && miles <= 4910) {
             setcurrentState("Idaho");
-        }else if(miles> 4316 && miles <= 4873) {
+        }else if(miles> 4910 && miles <= 5633) {
             setcurrentState("Montana");
-        }else if(miles> 4873 && miles <= 5135) {
+        }else if(miles> 4633 && miles <= 5889) {
             setcurrentState("North Dakota");
-        }else if (miles> 5135 && miles <= 5458) {
+        }else if (miles> 5889 && miles <= 6272) {
             setcurrentState("South Dakota");
-        }else if (miles> 5458 && miles <= 5590) {
+        }else if (miles> 6272 && miles <= 6443) {
             setcurrentState("Iowa");
-        }else if (miles> 5590 && miles <= 5640) {
+        }else if (miles> 6443 && miles <= 6529) {
             setcurrentState("Missouri");
-        }else if (miles> 5640 && miles <= 6060) {
+        }else if (miles> 6529 && miles <= 6953) {
             setcurrentState("Kansas");
-        }else if (miles> 6060 && miles <= 6447) {
+        }else if (miles> 6953 && miles <= 7403) {
             setcurrentState("Colorado");
-        }else if (miles> 6447 && miles <= 6620) {
+        }else if (miles> 7403 && miles <= 7610) {
             setcurrentState("Utah");
-        }else if (miles> 6620 && miles <= 7101) {
+        }else if (miles> 7610 && miles <= 8154) {
             setcurrentState("Arizona");
-        }else if (miles> 7101 && miles <= 7367) {
+        }else if (miles> 8154 && miles <= 8450) {
             setcurrentState("Mexico");
-        }else if (miles> 7367 && miles <= 7477) {
+        }else if (miles> 8450 && miles <= 8855) {
             setcurrentState("California");
-        }else if (miles> 7477 && miles <= 7580) {
+        }else if (miles> 8855 && miles <= 8966) {
             setcurrentState("Arizona");
-        }else if (miles> 7580 && miles <= 7637) {
+        }else if (miles> 8966 && miles <= 9036) {
             setcurrentState("Nevada");
-        }else if (miles> 7637 && miles <= 7724) {
+        }else if (miles> 9036 && miles <= 9240) {
             setcurrentState("Arizona");
-        }else if (miles> 7724 && miles <= 8124) {
+        }else if (miles> 9240 && miles <= 9487) {
             setcurrentState("California");
-        }else if (miles> 8124 && miles <= 8400) {
+        }else if (miles> 9487 && miles <= 9825) {
             setcurrentState("Arizona");
-        }else if (miles> 8400 && miles <= 8577) {
+        }else if (miles> 9825 && miles <= 10023) {
             setcurrentState("Utah");
-        }else if (miles> 8577 && miles <= 8965) {
+        }else if (miles> 10023 && miles <= 10471) {
             setcurrentState("Colorado");
-        }else if (miles> 8965 && miles <= 9379) {
+        }else if (miles> 10471 && miles <= 10892) {
             setcurrentState("Kansas");
-        }else if (miles> 9379 && miles <= 9434) {
+        }else if (miles> 10892 && miles <= 10988) {
             setcurrentState("Missouri");
-        }else if (miles> 9434 && miles <= 9597) {
+        }else if (miles> 10988 && miles <= 11158) {
             setcurrentState("Iowa");
-        }else if (miles> 9597 && miles <= 9888) {
+        }else if (miles> 11158 && miles <= 11629) {
             setcurrentState("South Dakota");
-        }else if (miles> 9888 && miles <= 10150) {
+        }else if (miles> 11629 && miles <= 11718) {
             setcurrentState("North Dakota");
-        }else if (miles> 10150 && miles <= 10745) {
+        }else if (miles> 11718 && miles <= 12490) {
             setcurrentState("Montana");
-        }else if (miles> 10745 && miles <= 12226) {
+        }else if (miles> 12490 && miles <= 12573) {
+            setcurrentState("Idaho");
+        }else if (miles> 12573 && miles <= 12643) {
+            setcurrentState("Washington");
+        }
+        else if (miles> 12643 && miles <= 14812) {
             setcurrentState("Canada");
-        }else if (miles> 12226 && miles <= 12524) {
+        }
+        else if (miles> 14812 && miles <= 16000) {
             setcurrentState("Alaska");
         }
     }, [miles]); // This useEffect will run every time 'miles' changes
