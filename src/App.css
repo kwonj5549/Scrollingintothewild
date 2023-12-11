@@ -92,7 +92,7 @@ body {
   text-align: center;
   color: black;
   /*top: -36vh;*/
-  left: 10vw;
+  left: 5vw;
   font-size: 1.9rem; /* Adjust font size as needed */
 
     border-image-source: url('/src/assets/new_display.png'); /* Use the uploaded image path */
@@ -100,6 +100,32 @@ body {
     border-image-width: 4vh 4vh 4vh 4vh;
     border-image-outset: 0px 0px 0px 0px;
     border-image-repeat: stretch stretch;
+}
+.googlemap{
+  position: relative;
+  top: 3.2vh;
+  left: 1.5vw;
+  width: 27vw;
+  /*padding-left: ;*/
+  padding-right: 6%;
+  /*margin-bottom: 1vh;*/
+  height:27.5vh
+}
+.map-display-container {
+  position: absolute;
+  text-align: center;
+  color: black;
+  top: -35vh;
+  height: 34vh;
+    width: 30vw;
+  left: 48vw;
+  font-size: 1.9rem; /* Adjust font size as needed */
+
+  border-image-source: url('/src/assets/new_display.png'); /* Use the uploaded image path */
+  border-image-slice: 34 30 38 31 fill;
+  border-image-width: 4vh 4vh 4vh 4vh;
+  border-image-outset: 0px 0px 0px 0px;
+  border-image-repeat: stretch stretch;
 }
 
 .display-text {

@@ -12,7 +12,7 @@ const App = () => {
     const carRef = useRef(null);
     const stripesRef = useRef(null);
     const animationCurrent = useRef(0);
-
+    const MapSignRef = useRef(null);
     const mileMarker0Ref = useRef(null);
     const mileSignRef = useRef(null);
     const [miles, setMiles] = useState(0);
@@ -62,6 +62,13 @@ const App = () => {
 
 
     }
+    const animateMapSign = (y) => {
+        gsap.to(MapSignRef.current, {
+            y: animationMultiplier * y,
+            ease: "none",
+
+        });
+    }
     const animateMileSignText = (y) => {
         // Calculate miles based on the scroll amount
         animationMilesCurrent.current = Math.floor(y);
@@ -70,6 +77,14 @@ const App = () => {
         console.log(miles)
     }
     const animateTextDisplay1 = (y) => {
+        gsap.to(textDisplay1Ref.current, {
+            y: animationMultiplier * y,
+            ease: "none",
+
+        });
+    }
+
+    const animateTextDisplay2 = (y) => {
         gsap.to(textDisplay1Ref.current, {
             y: animationMultiplier * y,
             ease: "none",
@@ -337,6 +352,12 @@ const App = () => {
         } else {
             animateMileSign(mileSignThreshold); // Adjusting mile sign's final position
         }
+        const mapSignThreshold = window.innerHeight * 0.38 / animationMultiplier;
+        if (animationCurrent.current < mapSignThreshold) {
+            animateMapSign(animationCurrent.current);
+        } else {
+            animateMapSign(mapSignThreshold); // Adjusting mile sign's final position
+        }
 
 
         handleDisplaySign(animationMilesCurrent.current);
@@ -438,7 +459,7 @@ const App = () => {
     const adjustedTop = `-${parseInt(displaySize.height, 10) + 1}vh`;
     return (
         <div className="App" style={{backgroundImage: `url(${backgroundImage})`}}>
-            <GoogleMapComponent miles={miles} />
+
             <div className="main-text" ref={mainTextRef}>
                 <p>Scrolling Into the Wild</p>
 
@@ -457,7 +478,9 @@ const App = () => {
                     </div>
                 </div>
             </div>
-
+            <div className="map-display-container" ref={MapSignRef} >
+                <GoogleMapComponent miles={miles} />
+            </div>
             <div className="text-display-container" ref={textDisplay1Ref} style={{
                 top: adjustedTop,
                 width: displaySize.width,
