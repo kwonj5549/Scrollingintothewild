@@ -11,7 +11,7 @@ import mileMarker0 from './assets/mile0.png';
 import mileSign from './assets/distance_state_sign.png';
 // import textDisplay1 from './assets/text_display.png';
 import GoogleMapComponent from './GoogleMapComponent';
-
+import bus152 from './assets/bus152.png';
 const App = () => {
     const mainTextRef = useRef(null);
     const carRef = useRef(null);
@@ -37,6 +37,7 @@ const App = () => {
     const backgroundMtnRef = useRef(null);
 const backgroundRivRef = useRef(null);
     const backgroundTreeRef = useRef(null);
+    const busRef = useRef(null);
     const animateText = (y) => {
         gsap.to(mainTextRef.current, {
             y: -y * animationMultiplier,
@@ -52,31 +53,36 @@ const backgroundRivRef = useRef(null);
     };
     const animateMileMarker0 = (x) => {
         gsap.to(mileMarker0Ref.current, {
-            x: -x * animationMultiplier,
+            x: -x * animationMultiplier/3,
             ease: "none",
         });
     }
-    const STRIPE_RESET_THRESHOLD = 2340;
+    // const STRIPE_RESET_THRESHOLD = 2340;
+    // const animateStripes = (x) => {
+    //     let adjustedX = parseInt(x % STRIPE_RESET_THRESHOLD);
+    //     console.log("adjustedX", adjustedX);
+    //
+    //     gsap.to(stripesRef.current, {
+    //         backgroundPosition: `${-adjustedX * animationMultiplier/10}px 0`,
+    //         ease: "none",
+    //         overwrite: true, // Ensures that any ongoing animation is immediately overwritten
+    //         immediateRender: false // Prevents GSAP from rendering an immediate state change
+    //     });
+    //
+    //     if (adjustedX === 0) {
+    //         // Force a reset of the position to start if it reaches 0
+    //         gsap.set(stripesRef.current, {
+    //             backgroundPosition: `0px 0`,
+    //             overwrite: true // Ensures this set action takes precedence
+    //         });
+    //     }
+    // };
     const animateStripes = (x) => {
-        let adjustedX = parseInt(x % STRIPE_RESET_THRESHOLD);
-        console.log("adjustedX", adjustedX);
-
         gsap.to(stripesRef.current, {
-            backgroundPosition: `${-adjustedX * animationMultiplier}px 0`,
+            backgroundPosition: `${-x * animationMultiplier/3}px 0`,
             ease: "none",
-            overwrite: true, // Ensures that any ongoing animation is immediately overwritten
-            immediateRender: false // Prevents GSAP from rendering an immediate state change
         });
-
-        if (adjustedX === 0) {
-            // Force a reset of the position to start if it reaches 0
-            gsap.set(stripesRef.current, {
-                backgroundPosition: `0px 0`,
-                overwrite: true // Ensures this set action takes precedence
-            });
-        }
     };
-
     const animateMileSign = (y) => {
         gsap.to(mileSignRef.current, {
             y: animationMultiplier * y,
@@ -107,6 +113,13 @@ const backgroundRivRef = useRef(null);
 
         });
     }
+    const animateBus = (x) => {
+        gsap.to(busRef.current, {
+            x: -animationMultiplier * x/10,
+            ease: "none",
+
+        });
+    }
     const animateBackgroundImageSky = (x) => {
         gsap.to(backgroundSkyRef.current, {
             backgroundPositionX: `-${x*animationMultiplier/80}px`, // Move the background to the left
@@ -127,7 +140,7 @@ const backgroundRivRef = useRef(null);
     };
     const animateBackgroundImageRiv = (x) => {
         gsap.to(backgroundRivRef.current, {
-            backgroundPositionX: `-${x*animationMultiplier/10}px`, // Move the background to the left
+            backgroundPositionX: `-${x*animationMultiplier/8}px`, // Move the background to the left
             ease: "none",
         });
     };
@@ -474,6 +487,66 @@ const backgroundRivRef = useRef(null);
             displaySize: {width: '40vw', height: '24vh'},
             movementThreshold: '28',
         },
+        {
+            start: 11323,
+            end: 11400,
+            text: "Chris arrives in Carthage, SD his last stop before he departs for Alaska. He sees Wayne Westerberg for the final time and he works for a little while in the grain elevator before departing on his Alaskan adventure.",
+            date: "",
+            textSize: "3vh", // Example text size
+            textSpacing: "2.5vh",
+            displaySize: {width: '40vw', height: '24vh'},
+            movementThreshold: '28',
+        },
+        {
+            start: 13541,
+            end: 13610,
+            text: "Quick Stop in Dawson Creek, BC",
+            date: "",
+            textSize: "3.5vh", // Example text size
+            textSpacing: "3.3vh",
+            displaySize: {width: '40vw', height: '13vh'},
+            movementThreshold: '17',
+        },
+        {
+            start: 14000,
+            end: 14060,
+            text: "A blizzard hits while he's near the Liard River causing him to have to wait it out in a nearby truck station. A trucker named Gaylord Stuckey drives him up to Fairbanks, Alaska.",
+            date: "",
+            textSize: "3.5vh", // Example text size
+            textSpacing: "3.3vh",
+            displaySize: {width: '40vw', height: '28vh'},
+            movementThreshold: '32',
+        },
+        {
+            start: 15132,
+            end: 15170,
+            text: "During his time in Alaska, Chris McCandless dedicated three days to intensive research at the University of Fairbanks' library, focusing on edible plants and wildlife in the surrounding areas. Understanding the importance of survival skills in the harsh Alaskan wilderness, he meticulously studied to prepare himself. Additionally, McCandless purchased a .22 caliber rifle, a choice that many would consider underpowered for the challenges of Alaska's rugged terrain and wildlife. In a poignant final act before venturing into the wilderness, he sent his last postcard, not to his family, but to Wayne Westerberg, a friend and confidant he had made during his travels. This series of actions reflects McCandless's commitment to his ideals of independence and living in harmony with nature, even in the face of daunting challenges.",
+            date: "",
+            textSize: "2.4vh", // Example text size
+            textSpacing: "2.5vh",
+            displaySize: {width: '44vw', height: '44vh'},
+            movementThreshold: '48',
+        },
+        {
+            start: 15200,
+            end: 15230,
+            text: "Chris begins hiking south along the Alaskan Highway. Along the way, he was picked up by Jim Gallien, who was heading to Anchorage. Gallien gave him a ride to Healy, Alaska, near the start of the Stampede Trail, marking himself as the last person to see McCandless alive. Gallien noted the surprisingly light weight of Chris's backpack for a wilderness survival expedition. He even offered Chris a pair of rubber boots for the journey, which Chris declined, staying true to his minimalistic approach despite the daunting Alaskan wilderness ahead.",
+            date: "",
+            textSize: "2.4vh", // Example text size
+            textSpacing: "2.5vh",
+            displaySize: {width: '40vw', height: '40vh'},
+            movementThreshold: '44',
+        },
+        {
+            start: 15260,
+            end: 15280,
+            text: "After Jim Gallien dropped him off near the Stampede Trail in Alaska, Chris McCandless's final journey began, culminating in a tale of adventure and tragedy. He ventured into the wilderness with minimal supplies, intending to survive off the land. McCandless found shelter in an abandoned bus, known as the \"Magic Bus,\" which became his base. Despite his efforts to hunt and forage, he faced severe challenges due to his inadequate gear and the harsh Alaskan environment. A critical mistake occurred when he possibly consumed a poisonous plant, leading to starvation and weakening his condition. His final days were marked by a desperate struggle for survival, as documented in his diary, and he ultimately succumbed to starvation. McCandless's body was later discovered by hunters, and his story sparked widespread debate on wilderness adventure and the pursuit of self-discovery. His journey remains a poignant and controversial narrative about the allure and dangers of the wild.",
+            date: "The End of the Journey",
+            textSize: "2.4vh", // Example text size
+            textSpacing: "2vh",
+            displaySize: {width: '44vw', height: '44vh'},
+            movementThreshold: '48',
+        },
     ];
     const handleKeyPress = (event) => {
         // Check if the right arrow key is pressed
@@ -486,6 +559,7 @@ const backgroundRivRef = useRef(null);
             handleWheel(simulatedScrollEvent);
         }
     };
+
     const handleWheel = (event) => {
         event.preventDefault();
         // if (animationMilesCurrent.current >= 1000 && animationMilesCurrent.current <= 2000) {
@@ -493,13 +567,26 @@ const backgroundRivRef = useRef(null);
         // } else {
         //     setScrollMultiplier(2);
         // }
+
         const scrollIncrement = Math.min(Math.max(event.deltaY, -1), 1) * scrollMultiplier;
 
-        animationCurrent.current += scrollIncrement;
+        // Determine the new potential value for animationCurrent
+        let newAnimationCurrent = animationCurrent.current + scrollIncrement;
 
-        if (animationCurrent.current < 0) {
-            animationCurrent.current = 0;
+        // Ensure newAnimationCurrent doesn't exceed the threshold (15267 miles)
+        if (newAnimationCurrent > 15267 * 2+8) {
+            newAnimationCurrent = 15267 * 2+8;
         }
+
+        // Prevent scrolling below 0
+        if (newAnimationCurrent < 0) {
+            newAnimationCurrent = 0;
+        }
+
+        // Update animationCurrent with the new value
+        animationCurrent.current = newAnimationCurrent;
+
+
 
         const carMoveThreshold = window.innerWidth * 0.40 / animationMultiplier;
         animateText(animationCurrent.current);
@@ -508,18 +595,27 @@ const backgroundRivRef = useRef(null);
             animateCar(animationCurrent.current);
             animateMileSignText(0);
         } else {
-            animateCar(carMoveThreshold); // Adjusting car's final position
-            const extraScroll = (animationCurrent.current - carMoveThreshold) / 2;
-            animateStripes(extraScroll);
-            animateMileMarker0(extraScroll);
-            // animationMilesCurrent.current += scrollIncrement;
-            animateBackgroundImageSky(extraScroll);
-            animateMileSignText(extraScroll);
-            animateBackgroundImageMtn(extraScroll);
-            animateBackgroundImageTree(extraScroll);
-            animateBackgroundImageRiv(extraScroll);
+            if(animationCurrent.current<15267 * 2+8) {
+                console.log(animationCurrent.current)
+                animateCar(carMoveThreshold); // Adjusting car's final position
+                const extraScroll = (animationCurrent.current - carMoveThreshold) / 2;
+                animateStripes(extraScroll);
+                animateMileMarker0(extraScroll);
+                // animationMilesCurrent.current += scrollIncrement;
+                animateBackgroundImageSky(extraScroll);
+                animateMileSignText(extraScroll);
+                animateBackgroundImageMtn(extraScroll);
+                animateBackgroundImageTree(extraScroll);
+                animateBackgroundImageRiv(extraScroll);
+            }
         }
+        if(animationMilesCurrent.current>15187){
+            const extraScroll = animationMilesCurrent.current-15187;
+            console.log("extrascroll",extraScroll);
+            animateBus(extraScroll);
 
+
+        }
         const mileSignThreshold = window.innerHeight * 0.32 / animationMultiplier;
         if (animationCurrent.current < mileSignThreshold) {
             animateMileSign(animationCurrent.current);
@@ -642,6 +738,7 @@ const backgroundRivRef = useRef(null);
             <div className="background1" style={{backgroundImage: `url(${backgroundImageRiv})`}} ref={backgroundRivRef}>
             </div>
             <div className="background2" style={{backgroundImage: `url(${backgroundImageTree})`}} ref={backgroundTreeRef}>
+                <img src={bus152} alt="bus" id="bus" ref={busRef}/>
             </div>
 
             <div className="main-text" ref={mainTextRef}>

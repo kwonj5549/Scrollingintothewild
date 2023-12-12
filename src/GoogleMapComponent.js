@@ -3,6 +3,8 @@ import markerAnimate from './markerAnimate'; // Adjust the path as needed
 import waypoints from './waypoints.json';
 import carImage from './assets/car.png';
 import carImageFlipped from './assets/carflipped.png';
+import mccandless from './assets/mccandlessflipped.png';
+
 var routePath = [];
 var currentPathIndex = 0;
 
@@ -49,9 +51,9 @@ const GoogleMapComponent = ({miles}) => {
             const map = new google.maps.Map(mapRef.current, mapOptions);
             // Define the custom icon with a specific size
             const customIcon = {
-                url: carImageFlipped, // Path to your custom marker image
+                url: mccandless, // Path to your custom marker image
                 // size: new google.maps.Size(30,null), // Desired width and height
-                scaledSize: new google.maps.Size(50,20.65) // This ensures the image is scaled properly
+                scaledSize: new google.maps.Size(75,75) // This ensures the image is scaled properly
             };
 
             const marker = new google.maps.Marker({
@@ -104,8 +106,8 @@ const GoogleMapComponent = ({miles}) => {
             const nextLng = position.lng();
 
             const leftIcon = {
-                url: carImageFlipped,
-                scaledSize: new google.maps.Size(50, 20.65)
+                url: mccandless,
+                scaledSize: new google.maps.Size(75, 75)
             };
 
 
