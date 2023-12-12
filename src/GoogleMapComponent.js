@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import markerAnimate from './markerAnimate'; // Adjust the path as needed
 import waypoints from './waypoints.json';
-
+import carImage from './assets/car.png';
+import carImageFlipped from './assets/carflipped.png';
 var routePath = [];
 var currentPathIndex = 0;
 
@@ -46,11 +47,18 @@ const GoogleMapComponent = ({miles}) => {
                 scrollwheel: false,
             };
             const map = new google.maps.Map(mapRef.current, mapOptions);
+            // Define the custom icon with a specific size
+            const customIcon = {
+                url: carImageFlipped, // Path to your custom marker image
+                // size: new google.maps.Size(30,null), // Desired width and height
+                scaledSize: new google.maps.Size(50,20.65) // This ensures the image is scaled properly
+            };
+
             const marker = new google.maps.Marker({
                 position: startLocation,
-                map: map
+                map: map,
+                icon: customIcon // Use the custom icon with defined size
             });
-
             mapInstanceRef.current = map;
 
 
@@ -90,6 +98,18 @@ const GoogleMapComponent = ({miles}) => {
             const latlng = new google.maps.LatLng(position.lat(), position.lng());
             marker.setPosition(latlng);
             map.setCenter(latlng);
+
+            // Determine direction (left or right)
+            const currentLng = markerRef.current.getPosition().lng();
+            const nextLng = position.lng();
+
+            const leftIcon = {
+                url: carImageFlipped,
+                scaledSize: new google.maps.Size(50, 20.65)
+            };
+
+
+            marker.setIcon(leftIcon);
         }
         function findNextPosition(currentPosition, distance) {
             const google = window.google;
