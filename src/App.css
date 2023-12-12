@@ -25,6 +25,48 @@ body {
   justify-content: space-between; /* Distribute children with space between */
   background-color: #fff; /* Optional: background color */
 }
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background-image: url(./assets/background.png);*/
+  background-size: 100% 78%; /* or any other size that fits your design */
+  background-repeat: repeat-x;
+}
+/*.backgroundtest {*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  !*background-image: url(./assets/background.png);*!*/
+/*  background-size: 100% 78%; !* or any other size that fits your design *!*/
+/*  background-repeat: repeat-x;*/
+/*  z-index:-3;*/
+/*}*/
+.background2{
+  position: absolute;
+  bottom:0vh;
+  left: 0vh;
+  width: 100%;
+  height: 100%;
+  /*background-image: url(./assets/background.png);*/
+  background-size: 100% 78vh; /* or any other size that fits your design */
+  background-repeat: repeat-x;
+}
+.background1{
+  position: absolute;
+  bottom:0vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background-image: url(./assets/background.png);*/
+  background-size: 100% 78vh; /* or any other size that fits your design */
+  background-repeat: repeat-x;
+}
+
 
 .main-text {
 
@@ -39,14 +81,14 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 20%; /* Adjust the height as needed */
+  height: 20vh; /* Adjust the height as needed */
   background: rgb(66, 70, 84); /* Background of the road */
 }
 #grass {
   position: absolute;
   bottom: 20%; /* Align with the bottom of the road */
   width: 100%;
-  height: 2%;
+  height: 2vh;
   background: #112318; /* Background of the grass */
 }
 #stripes {
