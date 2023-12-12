@@ -26,7 +26,7 @@ const App = () => {
     const [displaySize, setDisplaySize] = useState({ width: '40vw', height: '30vh' });
     const [movementThreshold, setMovementThreshold] = useState('34');
     const textDisplayYRef= useRef(0);
-    const [scrollMultiplier, setScrollMultiplier] = useState(1);
+    const [scrollMultiplier, setScrollMultiplier] = useState(2);
     const [scrollMiles, setScrollMiles] = useState(0);
     const animateText = (y) => {
         gsap.to(mainTextRef.current, {
@@ -161,7 +161,7 @@ const App = () => {
         {
             start: 120,
             end: 150,
-            text: "So why did McCandless embark on this fateful journey?",
+            text: "So why did Chris embark on this fateful journey?",
             date: "",
             textSize: "4vh", // Example text size
             textSpacing: "4vh",
@@ -171,7 +171,7 @@ const App = () => {
         {
             start: 190,
             end: 300,
-            text: "I believe McCandless embarked on this journey to escape from the societal pressures and materialism he perceived in his life and upbringing particularly his parents, which contributed to his desire to seek independence and a new identity in the wild. His odyssey was as much about finding himself as it was about challenging his limits and shedding what he considered the unnecessary burdens of modern life.\n",
+            text: "I believe Chris embarked on this journey to escape from the societal pressures and materialism he perceived in his life and upbringing particularly his parents, which contributed to his desire to seek independence and a new identity in the wild. His odyssey was as much about finding himself as it was about challenging his limits and shedding what he considered the unnecessary burdens of modern life.\n",
             date: "",
             textSize: "2.8vh", // Example text size
             textSpacing: "2.5vh",
@@ -184,19 +184,19 @@ const App = () => {
             displaySize: { width: '35vw', height: '20vh' },
             movementThreshold: '24',},
 
-        {start: 760, end: 800, text: "McCandless reaches Dallas, Texas and gets his money stolen while sleeping in the car", date: "",
+        {start: 760, end: 800, text: "Chris reaches Dallas, Texas and gets his money stolen while sleeping in the car", date: "",
             textSize: "3.5vh", // Example text size
             textSpacing: "3.5vh",
             displaySize: { width: '35vw', height: '20vh' },
             movementThreshold: '24',
         },
-        {start: 983, end: 1050, text: "McCandless takes a quick stop in Houston, Texas where he buries his money", date: "",
+        {start: 983, end: 1050, text: "Chris takes a quick stop in Houston, Texas where he buries his money", date: "",
             textSize: "3.5vh", // Example text size
             textSpacing: "3.5vh",
             displaySize: { width: '35vw', height: '20vh' },
             movementThreshold: '24',
         },
-        {start: 2439, end: 2539, text: "McCandless arrives at the Detrital Wash near Lake Mead.",
+        {start: 2439, end: 2539, text: "Chris arrives at the Detrital Wash near Lake Mead.",
             date: "July 6, 1990",
             textSize: "3.5vh", // Example text size
             textSpacing: "3.3vh",
@@ -210,33 +210,33 @@ const App = () => {
             displaySize: { width: '40vw', height: '25vh' },
             movementThreshold: '29',
         },
-        {start: 2615, end: 2655, text: "Shortly after the incident, he burns all his money. I feel that this symbolizes not only his rejection of materialism but also shows his full commitment to his journey.", date: "",
+        {start: 2615, end: 2655, text: "Shortly after the incident, he burns all his money. I feel that this symbolizes not only his rejection of materialism but also shows his full commitment to his journey. He also buries some of his belongings and license plate.", date: "",
             textSize: "3.5vh", // Example text size
             textSpacing: "3.3vh",
             displaySize: { width: '40vw', height: '24vh' },
             movementThreshold: '28',
         },
 
-        {start: 2690, end: 2750, text: "McCandless hitchhikes through Nevada all the way to Lake Tahoe", date: "",
+        {start: 2690, end: 2750, text: "Chris hitchhikes through Nevada all the way to Lake Tahoe", date: "",
             textSize: "3.5vh", // Example text size
             textSpacing: "3.3vh",
             displaySize: { width: '40vw', height: '16vh' },
             movementThreshold: '20',
         },
 
-        {start: 2970, end: 3010, text: "McCandless arrives at Lake Tahoe.", date: "",
+        {start: 2970, end: 3010, text: "Chris arrives at Lake Tahoe.", date: "",
             textSize: "3.5vh", // Example text size
             textSpacing: "3.3vh",
             displaySize: { width: '35vw', height: '13vh' },
             movementThreshold: '17',
         },
-        {start: 3050, end: 3090, text: "McCandless gets picked up by a man named Crazy Ernie who invited him to work on his rundown ranch. However, after 11 days, he realizes that Crazy Ernie will not pay him and continues on his journey. I found it very interesting how earlier he burned his money but now he is trying to get money.", date: "",
+        {start: 3050, end: 3090, text: "Chris gets picked up by a man named Crazy Ernie who invited him to work on his rundown ranch. However, after 11 days, he realizes that Crazy Ernie will not pay him and continues on his journey. I found it very interesting how earlier he burned his money but now he is trying to get money.", date: "",
             textSize: "3vh", // Example text size
             textSpacing: "2.8vh",
             displaySize: { width: '40vw', height: '30vh' },
             movementThreshold: '34',
         },
-        {start: 3345, end: 3400, text: "McCandless arrives at Orick, CA where met Jan Burres and her boyfriend Bob. This encounter was significant, with Jan developing a maternal affection for the adventurous McCandless. They exchanged stories and ideals about freedom and exploration, and Jan and Bob provided him with essential supplies for his travels. This meaningful connection was maintained through postcards and letters, highlighting McCandless's ability to form lasting relationships and his reliance on the kindness of others during his journey. ", date: "",
+        {start: 3345, end: 3400, text: "Chris arrives at Orick, CA where met Jan Burres and her boyfriend Bob. This encounter was significant, with Jan developing a maternal affection for the adventurous McCandless. They exchanged stories and ideals about freedom and exploration, and Jan and Bob provided him with essential supplies for his travels. This meaningful connection was maintained through postcards and letters, highlighting Chris's ability to form lasting relationships and his reliance on the kindness of others during his journey. ", date: "",
             textSize: "3vh", // Example text size
             textSpacing: "2.8vh",
             displaySize: { width: '45vw', height: '40vh' },
@@ -254,13 +254,13 @@ const App = () => {
             displaySize: { width: '40vw', height: '13vh' },
             movementThreshold: '17',
         },
-        {start: 4499, end: 4550, text: "McCandless arrives at Cut Bank, MT where he meets Wayne Westerberg. Westerberg, who owned a grain elevator in Carthage, South Dakota, offered McCandless both employment and a place to stay, providing him with much-needed respite and stability during his travels. Their friendship became a significant part of McCandless's story, with Westerberg understanding and respecting his quest for freedom and adventure. This connection continued throughout McCandless's journey, as they kept in touch and McCandless periodically returned to work for Westerberg. This relationship offered McCandless not just practical support but also emotional support, highlighting the depth and impact of his interactions during his travels.. ", date: "",
+        {start: 4499, end: 4550, text: "Chris arrives at Cut Bank, MT where he meets Wayne Westerberg. Westerberg, who owned a grain elevator in Carthage, South Dakota, offered Chris both employment and a place to stay, providing him with much-needed respite and stability during his travels. Their friendship became a significant part of McCandless's story, with Westerberg understanding and respecting his quest for freedom and adventure. This connection continued throughout Chris's journey, as they kept in touch and Chris periodically returned to work for Westerberg. This relationship offered Chris not just practical support but also emotional support, highlighting the depth and impact of his interactions during his travels. ", date: "",
             textSize: "2.9vh", // Example text size
             textSpacing: "2.8vh",
             displaySize: { width: '45vw', height: '42vh' },
             movementThreshold: '46',
         },
-        {start: 5315, end: 5350, text: "McCandless returned to South Dakota with Wayne, where he spent several months working at Wayne's grain elevator. Wayne recalled Chris as an exceptionally hardworking individual, notable for his refusal to accept payment for his labor. Chris remained there until September, at which point he chose to leave in search of warmer climates.", date: "",
+        {start: 5315, end: 5350, text: "Chris returned to South Dakota with Wayne, where he spent several months working at Wayne's grain elevator. Wayne recalled Chris as an exceptionally hardworking individual, notable for his refusal to accept payment for his labor. Chris remained there until September, at which point he chose to leave in search of warmer climates.", date: "",
             textSize: "3vh", // Example text size
             textSpacing: "3vh",
             displaySize: { width: '40vw', height: '33vh' },
@@ -302,19 +302,39 @@ const App = () => {
             displaySize: { width: '45vw', height: '24vh' },
             movementThreshold: '28',
         },
-        {start: 7517, end: 7570, text: "After arriving in Los Angeles, California, with the intention of finding a job and obtaining an ID, Chris McCandless soon felt overwhelmed and alienated by the societal norms and the bustling urban environment. This experience quickly led him to abandon his initial plan. Feeling out of place in the structured and crowded setting of the city, he returned to the road, resuming his journey of exploration and solitude.", date: "",
+        {start: 7517, end: 7570, text: "After arriving in Los Angeles, California, with the intention of finding a job and obtaining an ID, Chris soon felt overwhelmed and alienated by the societal norms and the bustling urban environment. This experience quickly led him to abandon his initial plan. Feeling out of place in the structured and crowded setting of the city, he returned to the road, resuming his journey of exploration and solitude.", date: "",
             textSize: "3.5vh", // Example text size
             textSpacing: "3vh",
             displaySize: { width: '45vw', height: '40vh' },
             movementThreshold: '44',
         },
-        {start: 7517, end: 7570, text: "After arriving in Los Angeles, California, with the intention of finding a job and obtaining an ID, Chris McCandless soon felt overwhelmed and alienated by the societal norms and the bustling urban environment. This experience quickly led him to abandon his initial plan. Feeling out of place in the structured and crowded setting of the city, he returned to the road, resuming his journey of exploration and solitude.", date: "",
-            textSize: "3.5vh", // Example text size
+        {start: 7590, end: 7630, text: "Chris makes a quick stop at Detirial Wash to recover some of his buried belongings.", date: "",
+            textSize: "3.9vh", // Example text size
             textSpacing: "3vh",
-            displaySize: { width: '45vw', height: '40vh' },
+            displaySize: { width: '40vw', height: '15vh' },
+            movementThreshold: '44',
+        },
+        {start: 7590, end: 7630, text: "Chris arrives in Las Vegas where he works a little while in an italian restaurant before departing. However, not much is known about what Chris did during this time.", date: "",
+            textSize: "3.9vh", // Example text size
+            textSpacing: "3vh",
+            displaySize: { width: '40vw', height: '15vh' },
+            movementThreshold: '44',
+        },
+        {start: 7590, end: 7630, text: "Chris arrives in Bullhead, Arizona where he stays for 2 months and works at McDonalds. ", date: "",
+            textSize: "3.9vh", // Example text size
+            textSpacing: "3vh",
+            displaySize: { width: '40vw', height: '15vh' },
             movementThreshold: '44',
         },
     ];
+    const handleKeyPress = (event) => {
+        // Check if the right arrow key is pressed
+        if (event.keyCode === 39) {
+            // Simulate a scroll event
+            const simulatedScrollEvent = { deltaY: 1 * scrollMultiplier, preventDefault: () => {} };
+            handleWheel(simulatedScrollEvent);
+        }
+    };
     const handleWheel = (event) => {
         event.preventDefault();
         // if (animationMilesCurrent.current >= 1000 && animationMilesCurrent.current <= 2000) {
@@ -338,7 +358,7 @@ const App = () => {
             animateMileSignText(0);
         } else {
             animateCar(carMoveThreshold); // Adjusting car's final position
-            const extraScroll = (animationCurrent.current - carMoveThreshold);
+            const extraScroll = (animationCurrent.current - carMoveThreshold)/2;
             animateStripes(extraScroll);
             animateMileMarker0(extraScroll);
             // animationMilesCurrent.current += scrollIncrement;
@@ -451,14 +471,13 @@ const App = () => {
         }
     }, [miles]); // This useEffect will run every time 'miles' changes
     useEffect(() => {
-
-
-        window.addEventListener("wheel", handleWheel, {passive: false});
+        window.addEventListener("wheel", handleWheel, { passive: false });
+        window.addEventListener("keydown", handleKeyPress);
 
         return () => {
             window.removeEventListener("wheel", handleWheel);
+            window.removeEventListener("keydown", handleKeyPress);
         };
-
     }, );
     const adjustedTop = `-${parseInt(displaySize.height, 10) + 1}vh`;
     return (
